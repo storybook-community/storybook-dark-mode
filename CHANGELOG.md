@@ -1,3 +1,16 @@
+# v4.0.4 (Sat May 31 2025)
+
+#### ⚠️ Pushed to `master`
+
+- chore: update project name to storybook-dark-mode2 in .all-contributorsrc ([@unional](https://github.com/unional))
+- chore: add cSpell ignore path for .all-contributorsrc ([@unional](https://github.com/unional))
+
+#### Authors: 1
+
+- Homa Wong ([@unional](https://github.com/unional))
+
+---
+
 # v4.0.3 (Sat May 31 2025)
 
 :tada: This release contains work from new contributors! :tada:
