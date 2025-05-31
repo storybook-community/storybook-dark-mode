@@ -36,6 +36,9 @@
 		"editor.defaultFormatter": "biomejs.biome",
 		"editor.formatOnSave": true
 	},
+	"cSpell.ignorePaths": [
+		".all-contributorsrc"
+	],
 	"cSpell.words": [
 		"mkdist",
 		"repobuddy",
