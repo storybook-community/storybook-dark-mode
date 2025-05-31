@@ -1,5 +1,5 @@
 {
-  "name": "storybook-dark-mode",
+  "name": "storybook-dark-mode2",
   "version": "4.0.2",
   "description": "Toggle between light and dark mode in Storybook",
   "keywords": [
@@ -8,7 +8,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/hipstersmoothie/storybook-dark-mode"
+    "url": "https://github.com/repobuddy/storybook-dark-mode"
   },
   "license": "MIT",
   "author": {
