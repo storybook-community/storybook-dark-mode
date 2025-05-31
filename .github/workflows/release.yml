@@ -38,7 +38,7 @@ jobs:
         uses: changesets/action@v1
         with:
           commit: 'chore: version packages'
-          version: yarn version
-          publish: yarn release
+          version: yarn run version
+          publish: yarn run release
         env:
           GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
