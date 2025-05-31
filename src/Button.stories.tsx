@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes } from 'react';
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 function Button(props: ButtonHTMLAttributes<HTMLButtonElement>) {
   return <button type="button" {...props} />;
