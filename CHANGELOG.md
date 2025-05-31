@@ -1,5 +1,17 @@
 # v4.0.4 (Sat May 31 2025)
 
+## 5.0.0
+
+### Major Changes
+
+- [`e6aebdf`](https://github.com/repobuddy/storybook-dark-mode2/commit/e6aebdf6502c4555a997013c1e8115b4ac5189c3) Thanks [@unional](https://github.com/unional)! - Initial release of `storybook-dark-mode2` with support for Storybook 9.
+
+  Note: The previous published version was not versioned correctly with `auto`.
+
+### Patch Changes
+
+- [`984964f`](https://github.com/repobuddy/storybook-dark-mode2/commit/984964fc00254f9725c7f3ee2e00ff74d3cd75a6) Thanks [@unional](https://github.com/unional)! - Add `package.json` exports
+
 #### ⚠️ Pushed to `master`
 
 - chore: update project name to storybook-dark-mode2 in .all-contributorsrc ([@unional](https://github.com/unional))
@@ -646,7 +658,7 @@ Thanks for all your work!
 
 #### 🐛 Bug Fix
 
-- Remove @storybook/* dependencies from peer dependencies [#186](https://github.com/hipstersmoothie/storybook-dark-mode/pull/186) ([@nilscox](https://github.com/nilscox))
+- Remove @storybook/\* dependencies from peer dependencies [#186](https://github.com/hipstersmoothie/storybook-dark-mode/pull/186) ([@nilscox](https://github.com/nilscox))
 - Fix: Storybook preset loading error [#187](https://github.com/hipstersmoothie/storybook-dark-mode/pull/187) ([@jackw](https://github.com/jackw))
 
 #### Authors: 2
@@ -732,7 +744,7 @@ Thank you, David Richolm ([@dricholm](https://github.com/dricholm)), for all you
 
 # v1.0.6 (Mon Mar 08 2021)
 
-#### ⚠️  Pushed to `master`
+#### ⚠️ Pushed to `master`
 
 - only get initial mode once ([@hipstersmoothie](https://github.com/hipstersmoothie))
 - don't set default params to avoid base theme flash ([@hipstersmoothie](https://github.com/hipstersmoothie))
@@ -886,7 +898,7 @@ Thank you, Jeroen Zwartepoorte ([@jpzwarte](https://github.com/jpzwarte)), for a
 
 # v0.4.1 (Wed Apr 15 2020)
 
-#### 🐛  Bug Fix
+#### 🐛 Bug Fix
 
 - respect current param if it's set [#98](https://github.com/hipstersmoothie/storybook-dark-mode/pull/98) ([@hipstersmoothie](https://github.com/hipstersmoothie))
 
@@ -898,7 +910,7 @@ Thank you, Jeroen Zwartepoorte ([@jpzwarte](https://github.com/jpzwarte)), for a
 
 # v0.4.0 (Fri Mar 27 2020)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - Add toggle button to to docs page and save custom themes on initilization [#97](https://github.com/hipstersmoothie/storybook-dark-mode/pull/97) ([@tskarhed](https://github.com/tskarhed))
 
@@ -910,7 +922,7 @@ Thank you, Jeroen Zwartepoorte ([@jpzwarte](https://github.com/jpzwarte)), for a
 
 # v0.3.1 (Fri Mar 13 2020)
 
-#### 🐛  Bug Fix
+#### 🐛 Bug Fix
 
 - Fix undefined story data [#91](https://github.com/hipstersmoothie/storybook-dark-mode/pull/91) ([@jacobcoughenour](https://github.com/jacobcoughenour))
 
@@ -922,11 +934,11 @@ Thank you, Jeroen Zwartepoorte ([@jpzwarte](https://github.com/jpzwarte)), for a
 
 # v0.3.0 (Tue Feb 04 2020)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - Create a React hook for getting dark-mode state [#89](https://github.com/hipstersmoothie/storybook-dark-mode/pull/89) ([@adierkens](https://github.com/adierkens))
 
-#### 🐛  Bug Fix
+#### 🐛 Bug Fix
 
 - Update dependency auto-config-hipstersmoothie to v3 [#88](https://github.com/hipstersmoothie/storybook-dark-mode/pull/88) ([@renovate-bot](https://github.com/renovate-bot) [@hipstersmoothie](https://github.com/hipstersmoothie) [@renovate[bot]](https://github.com/renovate[bot]))
 
@@ -953,7 +965,7 @@ Thank you, Jeroen Zwartepoorte ([@jpzwarte](https://github.com/jpzwarte)), for a
 
 # v0.2.0 (Tue Dec 10 2019)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - feat: add media query matcher for operating system theme control [#73](https://github.com/hipstersmoothie/storybook-dark-mode/pull/73) ([@Swiftwork](https://github.com/Swiftwork))
 
@@ -965,7 +977,7 @@ Thank you, Jeroen Zwartepoorte ([@jpzwarte](https://github.com/jpzwarte)), for a
 
 # v0.1.9 (Wed Oct 30 2019)
 
-#### 🐛  Bug Fix
+#### 🐛 Bug Fix
 
 - Fix useEffect warning/memory leak [#63](https://github.com/hipstersmoothie/storybook-dark-mode/pull/63) ([@adamyonk](https://github.com/adamyonk) [@hipstersmoothie](https://github.com/hipstersmoothie))
 
@@ -987,11 +999,11 @@ Thank you, Jeroen Zwartepoorte ([@jpzwarte](https://github.com/jpzwarte)), for a
 
 # v0.1.8 (Mon Oct 28 2019)
 
-#### 🐛  Bug Fix
+#### 🐛 Bug Fix
 
 - Listen for `docsRendered` event so it also picks up the correct theme. [#61](https://github.com/hipstersmoothie/storybook-dark-mode/pull/61) ([@adamyonk](https://github.com/adamyonk))
 
-#### 🏠  Internal
+#### 🏠 Internal
 
 - Update renovate.json [#16](https://github.com/hipstersmoothie/storybook-dark-mode/pull/16) ([@hipstersmoothie](https://github.com/hipstersmoothie))
 
@@ -1036,7 +1048,7 @@ Thank you, Jeroen Zwartepoorte ([@jpzwarte](https://github.com/jpzwarte)), for a
 
 # v0.1.6 (Tue Sep 03 2019)
 
-#### 🐛  Bug Fix
+#### 🐛 Bug Fix
 
 - Pin dependencies [#14](https://github.com/hipstersmoothie/storybook-dark-mode/pull/14) ([@renovate-bot](https://github.com/renovate-bot))
 - Configure Renovate [#13](https://github.com/hipstersmoothie/storybook-dark-mode/pull/13) ([@renovate-bot](https://github.com/renovate-bot))
@@ -1049,7 +1061,7 @@ Thank you, Jeroen Zwartepoorte ([@jpzwarte](https://github.com/jpzwarte)), for a
 
 # v0.1.5 (Tue Aug 27 2019)
 
-#### 🐛  Bug Fix
+#### 🐛 Bug Fix
 
 - Fix dependency issues [#12](https://github.com/hipstersmoothie/storybook-dark-mode/pull/12) ([@bkniffler](https://github.com/bkniffler))
 
@@ -1061,7 +1073,7 @@ Thank you, Jeroen Zwartepoorte ([@jpzwarte](https://github.com/jpzwarte)), for a
 
 # v0.1.4 (Wed Jul 17 2019)
 
-#### 🐛  Bug Fix
+#### 🐛 Bug Fix
 
 - Subscribed to another event in order to trigger theme change on story change [#10](https://github.com/hipstersmoothie/storybook-dark-mode/pull/10) ([@carlesnunez](https://github.com/carlesnunez))
 
@@ -1073,7 +1085,7 @@ Thank you, Jeroen Zwartepoorte ([@jpzwarte](https://github.com/jpzwarte)), for a
 
 # v0.1.3 (Wed Mar 13 2019)
 
-#### 🐛  Bug Fix
+#### 🐛 Bug Fix
 
 - update store if defaults change [#7](https://github.com/hipstersmoothie/storybook-dark-mode/pull/7) ([@hipstersmoothie](https://github.com/hipstersmoothie))
 
@@ -1085,7 +1097,7 @@ Thank you, Jeroen Zwartepoorte ([@jpzwarte](https://github.com/jpzwarte)), for a
 
 # v0.1.2 (Wed Mar 13 2019)
 
-#### 🐛  Bug Fix
+#### 🐛 Bug Fix
 
 - persisted state [#6](https://github.com/hipstersmoothie/storybook-dark-mode/pull/6) ([@hipstersmoothie](https://github.com/hipstersmoothie))
 
@@ -1097,7 +1109,7 @@ Thank you, Jeroen Zwartepoorte ([@jpzwarte](https://github.com/jpzwarte)), for a
 
 # v0.1.1 (Wed Mar 13 2019)
 
-#### 🐛  Bug Fix
+#### 🐛 Bug Fix
 
 - emit DARK_MODE event via addons channel [#2](https://github.com/hipstersmoothie/storybook-dark-mode/pull/2) ([@pveyes](https://github.com/pveyes) [@hipstersmoothie](https://github.com/hipstersmoothie))
 
@@ -1110,7 +1122,7 @@ Thank you, Jeroen Zwartepoorte ([@jpzwarte](https://github.com/jpzwarte)), for a
 
 # v0.1.0 (Fri Mar 08 2019)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - Add ability to configure the dark and light themes [#5](https://github.com/hipstersmoothie/storybook-dark-mode/pull/5) ([@hipstersmoothie](https://github.com/hipstersmoothie))
 
@@ -1122,9 +1134,9 @@ Thank you, Jeroen Zwartepoorte ([@jpzwarte](https://github.com/jpzwarte)), for a
 
 # v0.0.4 (Wed Mar 06 2019)
 
-#### ⚠️  Pushed to master
+#### ⚠️ Pushed to master
 
-- add example gif  ([@lisowski54@gmail.com](https://github.com/lisowski54@gmail.com))
+- add example gif ([@lisowski54@gmail.com](https://github.com/lisowski54@gmail.com))
 
 #### Authors: 1
 
@@ -1134,9 +1146,9 @@ Thank you, Jeroen Zwartepoorte ([@jpzwarte](https://github.com/jpzwarte)), for a
 
 # v0.0.3 (Wed Mar 06 2019)
 
-#### ⚠️  Pushed to master
+#### ⚠️ Pushed to master
 
-- add a simple readme  ([@lisowski54@gmail.com](https://github.com/lisowski54@gmail.com))
+- add a simple readme ([@lisowski54@gmail.com](https://github.com/lisowski54@gmail.com))
 
 #### Authors: 1
 
@@ -1146,12 +1158,12 @@ Thank you, Jeroen Zwartepoorte ([@jpzwarte](https://github.com/jpzwarte)), for a
 
 # v0.0.2 (Wed Mar 06 2019)
 
-#### ⚠️  Pushed to master
+#### ⚠️ Pushed to master
 
-- add github to known hosts  ([@lisowski54@gmail.com](https://github.com/lisowski54@gmail.com))
-- add circle  ([@lisowski54@gmail.com](https://github.com/lisowski54@gmail.com))
-- add license  ([@lisowski54@gmail.com](https://github.com/lisowski54@gmail.com))
-- add author  ([@lisowski54@gmail.com](https://github.com/lisowski54@gmail.com))
+- add github to known hosts ([@lisowski54@gmail.com](https://github.com/lisowski54@gmail.com))
+- add circle ([@lisowski54@gmail.com](https://github.com/lisowski54@gmail.com))
+- add license ([@lisowski54@gmail.com](https://github.com/lisowski54@gmail.com))
+- add author ([@lisowski54@gmail.com](https://github.com/lisowski54@gmail.com))
 
 #### Authors: 1
 
