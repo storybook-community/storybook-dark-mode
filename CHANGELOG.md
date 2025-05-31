@@ -1,5 +1,13 @@
 # v4.0.4 (Sat May 31 2025)
 
+## 5.0.1
+
+### Patch Changes
+
+- [`89a1777`](https://github.com/repobuddy/storybook-dark-mode2/commit/89a1777a298238ff933af39115576e7b436ca8d8) Thanks [@unional](https://github.com/unional)! - Remove reliance on `@storybook/global`
+
+- [`f750005`](https://github.com/repobuddy/storybook-dark-mode2/commit/f750005801ec0b1fd1eb0e4b43eb594c81615025) Thanks [@unional](https://github.com/unional)! - Downgrade to Storybook 9.0.2 for general consumption.
+
 ## 5.0.0
 
 ### Major Changes
