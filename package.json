@@ -26,7 +26,8 @@
 				"types": "./cjs/index.d.ts",
 				"default": "./cjs/index.js"
 			}
-		}
+		},
+		"./package.json": "./package.json"
 	},
 	"main": "./cjs/index.js",
 	"module": "./esm/index.mjs",
