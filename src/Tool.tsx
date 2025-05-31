@@ -1,14 +1,13 @@
-import * as React from 'react'
-import { global } from '@storybook/global'
-import { themes, type ThemeVars } from 'storybook/theming'
-import { IconButton } from 'storybook/internal/components'
 import { MoonIcon, SunIcon } from '@storybook/icons'
-import { STORY_CHANGED, SET_STORIES, DOCS_RENDERED } from 'storybook/internal/core-events'
-import { type API, useParameter } from 'storybook/manager-api'
 import equal from 'fast-deep-equal'
+import * as React from 'react'
+import { IconButton } from 'storybook/internal/components'
+import { DOCS_RENDERED, SET_STORIES, STORY_CHANGED } from 'storybook/internal/core-events'
+import { type API, useParameter } from 'storybook/manager-api'
+import { themes, type ThemeVars } from 'storybook/theming'
 import { DARK_MODE_EVENT_NAME, UPDATE_DARK_MODE_EVENT_NAME } from './constants'
 
-const { document, window } = global as { document: Document; window: Window }
+const { document, window } = globalThis
 const modes = ['light', 'dark'] as const
 type Mode = (typeof modes)[number]
 
