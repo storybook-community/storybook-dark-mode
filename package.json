@@ -1,6 +1,6 @@
 {
 	"name": "storybook-dark-mode2",
-	"version": "4.0.2",
+	"version": "4.0.3",
 	"description": "Toggle between light and dark mode in Storybook",
 	"keywords": [
 		"storybook-addons",
