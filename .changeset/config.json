@@ -5,7 +5,7 @@
 	"changelog": [
 		"@changesets/changelog-github",
 		{
-			"repo": "hipstersmoothie/storybook-dark-mode2"
+			"repo": "repobuddy/storybook-dark-mode2"
 		}
 	],
 	"commit": false,
