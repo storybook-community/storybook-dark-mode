@@ -1,6 +1,14 @@
-# storybook-dark-mode
+# `storybook-dark-mode2`
 
 A storybook addons that lets your users toggle between dark and light mode.
+
+> [!NOTE]
+> This is a fork of `storybook-dark-mode` to support Storybook 9.
+>
+> We are still determining what is the next step for this addon.
+> One possibility is to build an improved addon that supports the features in `@storybook/addon-themes` while keeping the ability to control the preview iframe.
+>
+> That work may carry out in `repobuddy/storybook` as a new addon.
 
 ![Example](./example.gif)
 
@@ -9,31 +17,20 @@ A storybook addons that lets your users toggle between dark and light mode.
 Install the following npm module:
 
 ```sh
-npm i --save-dev storybook-dark-mode
+npm i --save-dev storybook-dark-mode2
 ```
 
 or with yarn:
 
 ```sh
-yarn add -D storybook-dark-mode
+yarn add -D storybook-dark-mode2
 ```
 
 Then, add following content to `.storybook/main.js`
 
 ```js
 module.exports = {
-  addons: ['storybook-dark-mode']
-};
-```
-
-## Upgrade from earlier version
-
-Change in `.storybook/main.js`
-
-```diff
-module.exports = {
--  addons: ['storybook-dark-mode/register']
-+  addons: ['storybook-dark-mode']
+  addons: ['storybook-dark-mode2']
 };
 ```
 
