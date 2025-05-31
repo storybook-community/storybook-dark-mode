@@ -1,7 +1,8 @@
-import * as React from 'react';
+import type { ButtonHTMLAttributes } from 'react';
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-function Button(props: React.ButtonHTMLAttributes<HTMLButtonElement>) {
+function Button(props: ButtonHTMLAttributes<HTMLButtonElement>) {
   return <button type="button" {...props} />;
 }
 
