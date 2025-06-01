@@ -1,5 +1,14 @@
 # v4.0.4 (Sat May 31 2025)
 
+## 5.0.2
+
+### Patch Changes
+
+- [`b412546`](https://github.com/repobuddy/storybook-dark-mode2/commit/b412546cc4fd2a0654cbbe2db5c6d318a49de14e) Thanks [@unional](https://github.com/unional)! - Remove `type: module` from `package.json`
+
+  Node 22.12.0 turns on ESM mode by default.
+  However, the `preset.js` needs to be a CommonJS module in order to work with older versions of Node.
+
 ## 5.0.1
 
 ### Patch Changes
