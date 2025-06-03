@@ -1,5 +1,15 @@
 # v4.0.4 (Sat May 31 2025)
 
+## 5.0.3
+
+### Patch Changes
+
+- [`60dcff7`](https://github.com/repobuddy/storybook-dark-mode2/commit/60dcff7707bf241e5fa6d62c9805fe2e3c7bb95a) Thanks [@unional](https://github.com/unional)! - Add `preset` export field to `package.json`.
+
+  In certain Node.js versions, the root `./preset.js` file is not read by Storybook.
+  Instead, the `./index.js` is read instead,
+  causing the `Tool.js` to be loaded in Node environment and throw an `Unable to access property of undefined` error.
+
 ## 5.0.2
 
 ### Patch Changes
