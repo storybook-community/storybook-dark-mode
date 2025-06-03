@@ -26,6 +26,7 @@
 				"default": "./cjs/index.js"
 			}
 		},
+		"./preset": "./preset.js",
 		"./package.json": "./package.json"
 	},
 	"main": "./cjs/index.js",
