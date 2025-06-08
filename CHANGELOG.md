@@ -1,5 +1,15 @@
 # v4.0.4 (Sat May 31 2025)
 
+## 5.2.0
+
+### Minor Changes
+
+- [`010fc08`](https://github.com/repobuddy/storybook-dark-mode2/commit/010fc08a87469c7672d99a951b6263070d0f412a) Thanks [@unional](https://github.com/unional)! - Add `/manager` export field.
+  This allows preset addons to load this addon.
+
+- [`7de145d`](https://github.com/repobuddy/storybook-dark-mode2/commit/7de145d976f128efb2c9623519657ab3fd2da196) Thanks [@unional](https://github.com/unional)! - Use hooks provided by storybook.
+  This make sure the addon is using the same React version as storybook.
+
 ## 5.1.0
 
 ### Minor Changes
