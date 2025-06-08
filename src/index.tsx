@@ -1,4 +1,4 @@
-import { addons, useEffect, useState } from 'storybook/preview-api'
+import { addons, useEffect, useParameter, useState } from 'storybook/preview-api'
 import { DARK_MODE_EVENT_NAME } from './constants'
 import { store } from './Tool'
 
@@ -6,6 +6,10 @@ import { store } from './Tool'
  * Returns the current state of storybook's dark-mode
  */
 export function useDarkMode(): boolean {
+	const docs: any = useParameter('docs')
+	if (docs?.theme) {
+		return docs.theme.base === 'dark'
+	}
 	const [isDark, setIsDark] = useState(store().current === 'dark')
 
 	useEffect(() => {
