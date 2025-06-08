@@ -1,5 +1,13 @@
 # v4.0.4 (Sat May 31 2025)
 
+## 5.1.0
+
+### Minor Changes
+
+- [`9575acf`](https://github.com/repobuddy/storybook-dark-mode2/commit/9575acf0bda50326d3aa81856eff0ad52198c60e) Thanks [@unional](https://github.com/unional)! - Allow `docs.theme` override
+
+- [`4a5e096`](https://github.com/repobuddy/storybook-dark-mode2/commit/4a5e096bc7d7f98f7ea1b26fb41b8f99615ac813) Thanks [@unional](https://github.com/unional)! - Disable toolbar icon button when user specify `docs.theme`
+
 ## 5.0.3
 
 ### Patch Changes
