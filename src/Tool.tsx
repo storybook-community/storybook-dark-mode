@@ -1,8 +1,9 @@
 import { MoonIcon, SunIcon } from '@storybook/icons'
 import equal from 'fast-deep-equal'
-import * as React from 'react'
+import React from 'react'
 import { IconButton } from 'storybook/internal/components'
 import { DOCS_RENDERED, SET_STORIES, STORY_CHANGED } from 'storybook/internal/core-events'
+import { useCallback, useEffect, useMemo, useState } from 'storybook/internal/preview-api'
 import { type API, useParameter } from 'storybook/manager-api'
 import { themes, type ThemeVars } from 'storybook/theming'
 import { DARK_MODE_EVENT_NAME, UPDATE_DARK_MODE_EVENT_NAME } from './constants'
@@ -134,15 +135,15 @@ interface DarkModeProps {
 
 /** A toolbar icon to toggle between dark and light themes in storybook */
 export function DarkMode({ api }: DarkModeProps) {
-	const [isDark, setDark] = React.useState(prefersDark.matches)
+	const [isDark, setDark] = useState(prefersDark.matches)
 	const darkModeParams = useParameter<Partial<DarkModeStore>>('darkMode', {})
 	const docs = useParameter<{ theme?: { base: 'dark' | 'light' } }>('docs')
 	const { current: defaultMode, stylePreview, ...params } = darkModeParams
 	const channel = api.getChannel()
 	// Save custom themes on init
-	const userHasExplicitlySetTheTheme = React.useMemo(() => store(params).userHasExplicitlySetTheTheme, [params])
+	const userHasExplicitlySetTheTheme = useMemo(() => store(params).userHasExplicitlySetTheTheme, [params])
 	/** Set the theme in storybook, update the local state, and emit an event */
-	const setMode = React.useCallback(
+	const setMode = useCallback(
 		(mode: Mode) => {
 			const currentStore = store()
 			api.setOptions({ theme: currentStore[mode] })
@@ -157,7 +158,7 @@ export function DarkMode({ api }: DarkModeProps) {
 	)
 
 	/** Update the theme settings in localStorage, react, and storybook */
-	const updateMode = React.useCallback(
+	const updateMode = useCallback(
 		(mode?: Mode) => {
 			const currentStore = store()
 			const current = mode || (currentStore.current === 'dark' ? 'light' : 'dark')
@@ -177,7 +178,7 @@ export function DarkMode({ api }: DarkModeProps) {
 	}
 
 	/** Render the current theme */
-	const renderTheme = React.useCallback(() => {
+	const renderTheme = useCallback(() => {
 		const { current = 'light' } = store()
 		setMode(current)
 	}, [setMode])
@@ -190,7 +191,7 @@ export function DarkMode({ api }: DarkModeProps) {
 	}
 
 	/** When storybook params change update the stored themes */
-	React.useEffect(() => {
+	useEffect(() => {
 		const currentStore = store()
 		// Ensure we use the stores `current` value first to persist
 		// themeing between page loads and story changes.
@@ -201,7 +202,7 @@ export function DarkMode({ api }: DarkModeProps) {
 		})
 		renderTheme()
 	}, [darkModeParams, renderTheme])
-	React.useEffect(() => {
+	useEffect(() => {
 		channel.on(STORY_CHANGED, renderTheme)
 		channel.on(SET_STORIES, renderTheme)
 		channel.on(DOCS_RENDERED, renderTheme)
@@ -213,7 +214,7 @@ export function DarkMode({ api }: DarkModeProps) {
 			prefersDark.removeListener(prefersDarkUpdate)
 		}
 	})
-	React.useEffect(() => {
+	useEffect(() => {
 		channel.on(UPDATE_DARK_MODE_EVENT_NAME, updateMode)
 		return () => {
 			channel.removeListener(UPDATE_DARK_MODE_EVENT_NAME, updateMode)
@@ -221,7 +222,7 @@ export function DarkMode({ api }: DarkModeProps) {
 	})
 	// Storybook's first render doesn't have the global user params loaded so we
 	// need the effect to run whenever defaultMode is updated
-	React.useEffect(() => {
+	useEffect(() => {
 		// If a users has set the mode this is respected
 		if (userHasExplicitlySetTheTheme) {
 			return
