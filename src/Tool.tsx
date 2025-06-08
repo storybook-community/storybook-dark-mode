@@ -136,6 +136,7 @@ interface DarkModeProps {
 export function DarkMode({ api }: DarkModeProps) {
 	const [isDark, setDark] = React.useState(prefersDark.matches)
 	const darkModeParams = useParameter<Partial<DarkModeStore>>('darkMode', {})
+	const docs = useParameter<{ theme?: { base: 'dark' | 'light' } }>('docs')
 	const { current: defaultMode, stylePreview, ...params } = darkModeParams
 	const channel = api.getChannel()
 	// Save custom themes on init
@@ -235,6 +236,7 @@ export function DarkMode({ api }: DarkModeProps) {
 	return (
 		<IconButton
 			key="dark-mode"
+			disabled={!!docs?.['theme']}
 			title={isDark ? 'Change theme to light mode' : 'Change theme to dark mode'}
 			onClick={handleIconClick}
 		>
