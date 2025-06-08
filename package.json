@@ -26,6 +26,16 @@
 				"default": "./cjs/index.js"
 			}
 		},
+		"./manager": {
+			"import": {
+				"types": "./esm/preset/manager.d.ts",
+				"default": "./esm/preset/manager.mjs"
+			},
+			"require": {
+				"types": "./cjs/preset/manager.d.ts",
+				"default": "./cjs/preset/manager.js"
+			}
+		},
 		"./preset": "./preset.js",
 		"./package.json": "./package.json"
 	},
