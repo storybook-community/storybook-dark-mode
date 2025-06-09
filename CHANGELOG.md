@@ -1,5 +1,12 @@
 # v4.0.4 (Sat May 31 2025)
 
+## 5.2.1
+
+### Patch Changes
+
+- [`2a32a6e`](https://github.com/repobuddy/storybook-dark-mode2/commit/2a32a6ef3273d1848cd479f7539d6ffcf54442ef) Thanks [@unional](https://github.com/unional)! - Revert to use React hooks instead of storybook hooks.
+  Storybook preview hooks can only be called inside decorators and story functions.
+
 ## 5.2.0
 
 ### Minor Changes
