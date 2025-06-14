@@ -1,5 +1,11 @@
 # v4.0.4 (Sat May 31 2025)
 
+## 5.2.2
+
+### Patch Changes
+
+- [#11](https://github.com/storybook-community/storybook-dark-mode/pull/11) [`cb052a5`](https://github.com/storybook-community/storybook-dark-mode/commit/cb052a5249778b56c7cd98c4329bd11dbd93142c) Thanks [@unional](https://github.com/unional)! - Update title of the button when it is disabled.
+
 ## 5.2.1
 
 ### Patch Changes
