@@ -233,11 +233,18 @@ export function DarkMode({ api }: DarkModeProps) {
 			updateMode('dark')
 		}
 	}, [defaultMode, updateMode, userHasExplicitlySetTheTheme])
+	const disabled = !!docs?.['theme']
 	return (
 		<IconButton
 			key="dark-mode"
-			disabled={!!docs?.['theme']}
-			title={isDark ? 'Change theme to light mode' : 'Change theme to dark mode'}
+			disabled={disabled}
+			title={
+				disabled
+					? 'Dark mode is disabled in because `docs.theme` parameter is set'
+					: isDark
+						? 'Change theme to light mode'
+						: 'Change theme to dark mode'
+			}
 			onClick={handleIconClick}
 		>
 			{isDark ? <SunIcon aria-hidden="true" /> : <MoonIcon aria-hidden="true" />}
