@@ -15,11 +15,12 @@
 		"name": "Andrew Lisowski",
 		"email": "lisowski54@gmail.com"
 	},
+	"type": "module",
 	"exports": {
 		".": {
 			"import": {
 				"types": "./esm/index.d.ts",
-				"default": "./esm/index.mjs"
+				"default": "./esm/index.js"
 			},
 			"require": {
 				"types": "./cjs/index.d.ts",
@@ -29,7 +30,7 @@
 		"./manager": {
 			"import": {
 				"types": "./esm/preset/manager.d.ts",
-				"default": "./esm/preset/manager.mjs"
+				"default": "./esm/preset/manager.js"
 			},
 			"require": {
 				"types": "./cjs/preset/manager.d.ts",
@@ -40,7 +41,7 @@
 		"./package.json": "./package.json"
 	},
 	"main": "./cjs/index.js",
-	"module": "./esm/index.mjs",
+	"module": "./esm/index.js",
 	"types": "./esm/index.d.ts",
 	"files": [
 		"cjs",
@@ -52,7 +53,7 @@
 	"scripts": {
 		"prebuild": "yarn clean",
 		"build": "unbuild && ncp ./package.cjs.json ./cjs/package.json",
-		"clean": "rimraf ./dist",
+		"clean": "rimraf cjs dist esm",
 		"cs": "changeset",
 		"lint": "biome check",
 		"prepack": "unbuild && ncp ./package.cjs.json ./cjs/package.json",

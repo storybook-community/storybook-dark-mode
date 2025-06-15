@@ -12,7 +12,8 @@ export default {
 			builder: 'mkdist',
 			input: './src/',
 			outDir: './esm',
-			format: 'esm'
+			format: 'esm',
+			ext: 'js'
 		}
 	],
 	declaration: true,
