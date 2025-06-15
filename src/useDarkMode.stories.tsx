@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import * as React from 'react'
+import React from 'react'
 import { themes } from 'storybook/internal/theming'
 import { useDarkMode } from '.'
 

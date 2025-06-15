@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Addon_TypesEnum } from 'storybook/internal/types'
 import { addons } from 'storybook/manager-api'
 import { themes } from 'storybook/theming'
