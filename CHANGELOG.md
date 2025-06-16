@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.5.0
+
+### Minor Changes
+
+- [#10](https://github.com/storybook-community/storybook-dark-mode/pull/10) [`32c94f4`](https://github.com/storybook-community/storybook-dark-mode/commit/32c94f4cbb20f38af20a07ee1edac68ccc6d803f) Thanks [@unional](https://github.com/unional)! - Add `DarkModeDocsContainer`.
+
 ## 5.4.0
 
 ### Minor Changes
