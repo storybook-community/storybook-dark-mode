@@ -1,5 +1,13 @@
 # v4.0.4 (Sat May 31 2025)
 
+## 5.4.0
+
+### Minor Changes
+
+- [#15](https://github.com/storybook-community/storybook-dark-mode/pull/15) [`93f8040`](https://github.com/storybook-community/storybook-dark-mode/commit/93f80407a025f16db9314cf154dee23c29e1eb1a) Thanks [@unional](https://github.com/unional)! - Add `defineDarkModeParam()` to define dark mode parameters for Storybook configuration.
+  Add `parameters.darkMode.disable` to disable dark mode functionality for a story.
+  Move `const chan = addons.getChannel()` to module scope. This may fix https://github.com/hipstersmoothie/storybook-dark-mode/issues/297
+
 ## 5.3.0
 
 ### Minor Changes
