@@ -1,34 +1,15 @@
 import { MoonIcon, SunIcon } from '@storybook/icons'
 import equal from 'fast-deep-equal'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React from 'react'
 import { IconButton } from 'storybook/internal/components'
 import { DOCS_RENDERED, SET_STORIES, STORY_CHANGED } from 'storybook/internal/core-events'
+import { useCallback, useEffect, useMemo, useState } from 'storybook/internal/preview-api'
 import { type API, useParameter } from 'storybook/manager-api'
-import { themes, type ThemeVars } from 'storybook/theming'
-import { DARK_MODE_EVENT_NAME, UPDATE_DARK_MODE_EVENT_NAME } from './constants'
+import { themes } from 'storybook/theming'
+import { DARK_MODE_EVENT_NAME, UPDATE_DARK_MODE_EVENT_NAME } from './constants.js'
+import type { DarkModeStore, Mode } from './types.js'
 
 const { document, window } = globalThis
-const modes = ['light', 'dark'] as const
-type Mode = (typeof modes)[number]
-
-interface DarkModeStore {
-	/** The class target in the preview iframe */
-	classTarget: string
-	/** The current mode the storybook is set to */
-	current: Mode
-	/** The dark theme for storybook */
-	dark: ThemeVars
-	/** The dark class name for the preview iframe */
-	darkClass: string | string[]
-	/** The light theme for storybook */
-	light: ThemeVars
-	/** The light class name for the preview iframe */
-	lightClass: string | string[]
-	/** Apply mode to iframe */
-	stylePreview: boolean
-	/** Persist if the user has set the theme */
-	userHasExplicitlySetTheTheme: boolean
-}
 
 const STORAGE_KEY = 'sb-addon-themes-3'
 export const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)')
@@ -40,7 +21,8 @@ const defaultParams: Required<Omit<DarkModeStore, 'current'>> = {
 	light: themes.light,
 	lightClass: ['light'],
 	stylePreview: false,
-	userHasExplicitlySetTheTheme: false
+	userHasExplicitlySetTheTheme: false,
+	disable: false
 }
 
 /** Persist the dark mode settings in localStorage */
@@ -136,8 +118,8 @@ interface DarkModeProps {
 export function DarkModeToggle({ api }: DarkModeProps) {
 	const [isDark, setDark] = useState(prefersDark.matches)
 	const darkModeParams = useParameter<Partial<DarkModeStore>>('darkMode', {})
-	const docs = useParameter<{ theme?: { base: 'dark' | 'light' } }>('docs')
 	const { current: defaultMode, stylePreview, ...params } = darkModeParams
+	const docs = useParameter<{ theme?: { base: 'dark' | 'light' } }>('docs')
 	const channel = api.getChannel()
 	// Save custom themes on init
 	const userHasExplicitlySetTheTheme = useMemo(() => store(params).userHasExplicitlySetTheTheme, [params])
@@ -233,18 +215,16 @@ export function DarkModeToggle({ api }: DarkModeProps) {
 			updateMode('dark')
 		}
 	}, [defaultMode, updateMode, userHasExplicitlySetTheTheme])
-	const disabled = !!docs?.['theme']
+	const disabled = docs?.['theme']
+		? 'Dark mode is disabled as `docs.theme` parameter is set'
+		: params.disable
+			? 'Dark mode is disabled by parameter'
+			: undefined
 	return (
 		<IconButton
 			key="dark-mode"
-			disabled={disabled}
-			title={
-				disabled
-					? 'Dark mode is disabled in because `docs.theme` parameter is set'
-					: isDark
-						? 'Change theme to light mode'
-						: 'Change theme to dark mode'
-			}
+			disabled={!!disabled}
+			title={disabled ?? (isDark ? 'Change theme to light mode' : 'Change theme to dark mode')}
 			onClick={handleIconClick}
 		>
 			{isDark ? <SunIcon aria-hidden="true" /> : <MoonIcon aria-hidden="true" />}
