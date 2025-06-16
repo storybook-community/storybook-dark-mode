@@ -36,6 +36,7 @@ jobs:
           node-version: 20
           cache: yarn
       - run: yarn install
+      - run: yarn build
       - run: yarn sb:build
       - name: Setup Pages
         uses: actions/configure-pages@v5
