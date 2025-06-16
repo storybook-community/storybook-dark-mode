@@ -3,7 +3,7 @@ import { Addon_TypesEnum } from 'storybook/internal/types'
 import { addons } from 'storybook/manager-api'
 import { themes } from 'storybook/theming'
 
-import Tool, { prefersDark, store } from '../Tool'
+import DarkModeToggle, { prefersDark, store } from '../dark_mode_toggle'
 
 const currentStore = store()
 const currentTheme = currentStore.current || (prefersDark.matches && 'dark') || 'light'
@@ -20,6 +20,6 @@ addons.register('storybook/dark-mode', (api) => {
 		title: 'dark mode',
 		type: Addon_TypesEnum.TOOL,
 		match: ({ viewMode }) => viewMode === 'story' || viewMode === 'docs',
-		render: () => <Tool api={api} />
+		render: () => <DarkModeToggle api={api} />
 	})
 })

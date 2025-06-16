@@ -1,6 +1,6 @@
 import { addons, useEffect, useParameter, useState } from 'storybook/preview-api'
 import { DARK_MODE_EVENT_NAME } from './constants'
-import { store } from './Tool'
+import { store } from './dark_mode_toggle'
 
 /**
  * Returns the current state of storybook's dark-mode

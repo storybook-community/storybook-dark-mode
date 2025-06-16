@@ -133,7 +133,7 @@ interface DarkModeProps {
 }
 
 /** A toolbar icon to toggle between dark and light themes in storybook */
-export function DarkMode({ api }: DarkModeProps) {
+export function DarkModeToggle({ api }: DarkModeProps) {
 	const [isDark, setDark] = useState(prefersDark.matches)
 	const darkModeParams = useParameter<Partial<DarkModeStore>>('darkMode', {})
 	const docs = useParameter<{ theme?: { base: 'dark' | 'light' } }>('docs')
@@ -252,4 +252,4 @@ export function DarkMode({ api }: DarkModeProps) {
 	)
 }
 
-export default DarkMode
+export default DarkModeToggle
