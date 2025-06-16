@@ -1,5 +1,11 @@
 # v4.0.4 (Sat May 31 2025)
 
+## 5.3.0
+
+### Minor Changes
+
+- [#13](https://github.com/storybook-community/storybook-dark-mode/pull/13) [`d618cfd`](https://github.com/storybook-community/storybook-dark-mode/commit/d618cfd3dedd25d24f3bd6c5d31ce7d694432e05) Thanks [@unional](https://github.com/unional)! - Convert to ESM module
+
 ## 5.2.2
 
 ### Patch Changes
