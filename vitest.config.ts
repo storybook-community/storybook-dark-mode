@@ -1,8 +1,9 @@
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin'
+import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
-	plugins: [storybookTest()],
+	plugins: [tailwindcss(), storybookTest()],
 	optimizeDeps: {
 		include: ['react/jsx-dev-runtime']
 	},

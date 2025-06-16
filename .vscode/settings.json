@@ -46,5 +46,8 @@
 		"repobuddy",
 		"shipit",
 		"unshallow"
-	]
+	],
+	"files.associations": {
+		"*.css": "tailwindcss"
+	}
 }
