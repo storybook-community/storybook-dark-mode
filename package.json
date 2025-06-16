@@ -16,6 +16,9 @@
 		"email": "lisowski54@gmail.com"
 	},
 	"type": "module",
+	"imports": {
+		"#storybook-community/storybook-dark-mode": "./src/index.tsx"
+	},
 	"exports": {
 		".": {
 			"import": {
