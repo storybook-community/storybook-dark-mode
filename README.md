@@ -3,12 +3,14 @@
 A storybook addons that lets your users toggle between dark and light mode.
 
 > [!NOTE]
-> This is a fork of `storybook-dark-mode` to support Storybook 9.
+> This is a fork of [storybook-dark-mode](https://github.com/hipstersmoothie/storybook-dark-mode) by @hipstersmoothie to support Storybook 9.
 >
-> We are still determining what is the next step for this addon.
-> One possibility is to build an improved addon that supports the features in `@storybook/addon-themes` while keeping the ability to control the preview iframe.
+> It will be moved under the official Storybook Community organization for long term support.
+> We are in the process of finalizing some details.
 >
-> That work may carry out in `repobuddy/storybook` as a new addon.
+> This package will be renamed and deprecated soon.
+>
+> Please check the [repository README](https://github.com/storybook-community/storybook-dark-mode) for updates.
 
 ![Example](./example.gif)
 
