@@ -48,7 +48,7 @@
 		"esm",
 		"src",
 		"preset.js",
-		"!**/*.stories.tsx"
+		"!**/*.{spec,stories}.*"
 	],
 	"scripts": {
 		"prebuild": "yarn clean",
