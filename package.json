@@ -40,7 +40,7 @@
 				"default": "./cjs/preset/manager.js"
 			}
 		},
-		"./preset": "./preset.js",
+		"./preset": "./preset.cjs",
 		"./package.json": "./package.json"
 	},
 	"main": "./cjs/index.js",
@@ -50,7 +50,7 @@
 		"cjs",
 		"esm",
 		"src",
-		"preset.js",
+		"preset.cjs",
 		"!**/*.{spec,stories}.*"
 	],
 	"scripts": {
