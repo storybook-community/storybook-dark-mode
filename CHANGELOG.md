@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.5.1
+
+### Patch Changes
+
+- [#17](https://github.com/storybook-community/storybook-dark-mode/pull/17) [`cacdc0d`](https://github.com/storybook-community/storybook-dark-mode/commit/cacdc0dfdadbf05608ef7ef939f7cc96165dc4fa) Thanks [@JReinhold](https://github.com/JReinhold)! - Fix `preset.js` filename to `preset.cjs`.
+
 ## 5.5.0
 
 ### Minor Changes
