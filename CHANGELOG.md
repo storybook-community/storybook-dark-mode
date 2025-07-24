@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.6.0
+
+### Minor Changes
+
+- [#20](https://github.com/storybook-community/storybook-dark-mode/pull/20) [`37ebdb4`](https://github.com/storybook-community/storybook-dark-mode/commit/37ebdb45a0b7f5a174a56c48033fb9564b6e126a) Thanks [@IBRAHIMDANS](https://github.com/IBRAHIMDANS)! - bump version storybook 9.0.18 and fix import addons-docs
+
 ## 5.5.1
 
 ### Patch Changes
