@@ -1,4 +1,4 @@
-import { DocsContainer, type DocsContainerProps } from '@storybook/addon-docs'
+import { DocsContainer, type DocsContainerProps } from '@storybook/addon-docs/blocks'
 import React, { useEffect, useState, type PropsWithChildren } from 'react'
 import type { Renderer } from 'storybook/internal/types'
 import { DARK_MODE_EVENT_NAME } from '../constants.js'
