@@ -11,7 +11,7 @@
  * Usage: node scripts/test-brand-preservation.js
  */
 
-console.log('🧪 Testing Brand Image Preservation Fix\n');
+console.info('🧪 Testing Brand Image Preservation Fix\n');
 
 // Mock the addons API to simulate Storybook's behavior
 const mockConfig = {
@@ -49,9 +49,9 @@ const mockThemes = {
 
 // Simulate the OLD behavior (before our fix)
 function oldBehavior(mode) {
-  console.log(`❌ OLD: Switching to ${mode} theme...`);
+  console.info(`❌ OLD: Switching to ${mode} theme...`);
   const newTheme = mockThemes[mode]; // This loses brand customizations
-  console.log('   Result:', {
+  console.info('   Result:', {
     brandImage: newTheme.brandImage || '(missing)',
     brandTitle: newTheme.brandTitle || '(missing)',
     base: newTheme.base
@@ -61,7 +61,7 @@ function oldBehavior(mode) {
 
 // Simulate the NEW behavior (with our fix)
 function newBehavior(mode) {
-  console.log(`✅ NEW: Switching to ${mode} theme...`);
+  console.info(`✅ NEW: Switching to ${mode} theme...`);
   
   // Get current config (this is what our fix does)
   const currentConfig = mockAddons.getConfig();
@@ -77,7 +77,7 @@ function newBehavior(mode) {
     ...(currentTheme.brandTarget && { brandTarget: currentTheme.brandTarget }),
   };
   
-  console.log('   Result:', {
+  console.info('   Result:', {
     brandImage: newTheme.brandImage,
     brandTitle: newTheme.brandTitle,
     base: newTheme.base
@@ -86,23 +86,23 @@ function newBehavior(mode) {
 }
 
 // Test scenarios
-console.log('Initial setup:');
-console.log('User has configured:', {
+console.info('Initial setup:');
+console.info('User has configured:', {
   brandImage: mockConfig.theme.brandImage,
   brandTitle: mockConfig.theme.brandTitle
 });
 
-console.log('\n📝 Test 1: Switch to dark mode');
-console.log('---');
+console.info('\n📝 Test 1: Switch to dark mode');
+console.info('---');
 oldBehavior('dark');
 newBehavior('dark');
 
-console.log('\n📝 Test 2: Switch to light mode');
-console.log('---');
+console.info('\n📝 Test 2: Switch to light mode');
+console.info('---');
 oldBehavior('light');
 newBehavior('light');
 
-console.log('\n🎉 Summary:');
-console.log('- OLD behavior: Brand customizations are lost when switching themes');
-console.log('- NEW behavior: Brand customizations are preserved across theme switches');
-console.log('- This fixes the CSS specificity conflict issue reported in the GitHub issue!');
+console.info('\n🎉 Summary:');
+console.info('- OLD behavior: Brand customizations are lost when switching themes');
+console.info('- NEW behavior: Brand customizations are preserved across theme switches');
+console.info('- This fixes the CSS specificity conflict issue reported in the GitHub issue!');

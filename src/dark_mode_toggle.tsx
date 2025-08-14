@@ -1,10 +1,12 @@
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
+
 import { MoonIcon, SunIcon } from '@storybook/icons'
 import equal from 'fast-deep-equal'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { IconButton } from 'storybook/internal/components'
 import { DOCS_RENDERED, SET_STORIES, STORY_CHANGED } from 'storybook/internal/core-events'
 import { addons, type API, useParameter } from 'storybook/manager-api'
 import { themes } from 'storybook/theming'
+
 import { DARK_MODE_EVENT_NAME, UPDATE_DARK_MODE_EVENT_NAME } from './constants.js'
 import type { DarkModeStore, Mode } from './types.js'
 
@@ -126,19 +128,17 @@ export function DarkModeToggle({ api }: DarkModeProps) {
 	const setMode = useCallback(
 		(mode: Mode) => {
 			const currentStore = store()
-			// Get current addon configuration to preserve existing theme customizations
-			const currentConfig = addons.getConfig()
-			const currentTheme = currentConfig?.theme || {}
+			// Get current theme to preserve brand customizations across theme switches
+			const currentTheme = addons.getConfig()?.theme || {}
 			
-			// Merge new theme with existing theme to preserve user customizations
-			// This prevents CSS specificity conflicts by maintaining brand properties
+			// Preserve brand properties to prevent CSS specificity conflicts during theme switches
+			const brandProps = ['brandImage', 'brandTitle', 'brandUrl', 'brandTarget']
+				.filter(key => currentTheme[key])
+				.reduce((acc, key) => ({ ...acc, [key]: currentTheme[key] }), {})
+			
 			const newTheme = {
 				...currentStore[mode],
-				// Preserve brand-related properties from existing theme
-				...(currentTheme.brandImage && { brandImage: currentTheme.brandImage }),
-				...(currentTheme.brandTitle && { brandTitle: currentTheme.brandTitle }),
-				...(currentTheme.brandUrl && { brandUrl: currentTheme.brandUrl }),
-				...(currentTheme.brandTarget && { brandTarget: currentTheme.brandTarget }),
+				...brandProps,
 			}
 			
 			api.setOptions({ theme: newTheme })
