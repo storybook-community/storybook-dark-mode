@@ -1,10 +1,12 @@
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
+
 import { MoonIcon, SunIcon } from '@storybook/icons'
 import equal from 'fast-deep-equal'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { IconButton } from 'storybook/internal/components'
 import { DOCS_RENDERED, SET_STORIES, STORY_CHANGED } from 'storybook/internal/core-events'
-import { type API, useParameter } from 'storybook/manager-api'
+import { addons, type API, useParameter } from 'storybook/manager-api'
 import { themes } from 'storybook/theming'
+
 import { DARK_MODE_EVENT_NAME, UPDATE_DARK_MODE_EVENT_NAME } from './constants.js'
 import type { DarkModeStore, Mode } from './types.js'
 
@@ -126,7 +128,20 @@ export function DarkModeToggle({ api }: DarkModeProps) {
 	const setMode = useCallback(
 		(mode: Mode) => {
 			const currentStore = store()
-			api.setOptions({ theme: currentStore[mode] })
+			// Get current theme to preserve brand customizations across theme switches
+			const currentTheme = addons.getConfig()?.theme || {}
+			
+			// Preserve brand properties to prevent CSS specificity conflicts during theme switches
+			const brandProps = ['brandImage', 'brandTitle', 'brandUrl', 'brandTarget']
+				.filter(key => currentTheme[key])
+				.reduce((acc, key) => ({ ...acc, [key]: currentTheme[key] }), {})
+			
+			const newTheme = {
+				...currentStore[mode],
+				...brandProps,
+			}
+			
+			api.setOptions({ theme: newTheme })
 			setDark(mode === 'dark')
 			api.getChannel().emit(DARK_MODE_EVENT_NAME, mode === 'dark')
 			updateManager(currentStore)
