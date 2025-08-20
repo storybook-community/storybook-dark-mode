@@ -130,17 +130,20 @@ export function DarkModeToggle({ api }: DarkModeProps) {
 			const currentStore = store()
 			// Get current theme to preserve brand customizations across theme switches
 			const currentTheme = addons.getConfig()?.theme || {}
-			
+
 			// Preserve brand properties to prevent CSS specificity conflicts during theme switches
 			const brandProps = ['brandImage', 'brandTitle', 'brandUrl', 'brandTarget']
-				.filter(key => currentTheme[key])
-				.reduce((acc, key) => ({ ...acc, [key]: currentTheme[key] }), {})
-			
+				.filter((key) => currentTheme[key])
+				.reduce((acc, key) => {
+					acc[key] = currentTheme[key]
+					return acc
+				}, {})
+
 			const newTheme = {
 				...currentStore[mode],
-				...brandProps,
+				...brandProps
 			}
-			
+
 			api.setOptions({ theme: newTheme })
 			setDark(mode === 'dark')
 			api.getChannel().emit(DARK_MODE_EVENT_NAME, mode === 'dark')
