@@ -8,7 +8,8 @@
 		"isolatedModules": true,
 		"jsx": "react",
 		"lib": ["es2017", "dom"],
-		"module": "commonjs",
+		"module": "esnext",
+		"moduleResolution": "bundler",
 		"noImplicitAny": true,
 		"skipLibCheck": true,
 		"target": "es5"
