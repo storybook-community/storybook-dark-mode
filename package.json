@@ -17,7 +17,8 @@
 	},
 	"type": "module",
 	"imports": {
-		"#storybook-community/storybook-dark-mode": "./src/index.tsx"
+		"#storybook-community/storybook-dark-mode": "./src/index.tsx",
+		"#storybook-community/storybook-dark-mode/preview": "./src/preview/index.ts"
 	},
 	"exports": {
 		".": {
@@ -32,12 +33,22 @@
 		},
 		"./manager": {
 			"import": {
-				"types": "./esm/preset/manager.d.ts",
-				"default": "./esm/preset/manager.js"
+				"types": "./esm/manager/index.d.ts",
+				"default": "./esm/manager/index.js"
 			},
 			"require": {
-				"types": "./cjs/preset/manager.d.ts",
-				"default": "./cjs/preset/manager.js"
+				"types": "./cjs/manager/index.d.ts",
+				"default": "./cjs/manager/index.js"
+			}
+		},
+		"./preview": {
+			"import": {
+				"types": "./esm/preview/index.d.ts",
+				"default": "./esm/preview/index.js"
+			},
+			"require": {
+				"types": "./cjs/preview/index.d.ts",
+				"default": "./cjs/preview/index.js"
 			}
 		},
 		"./preset": "./preset.cjs",
