@@ -1,4 +1,3 @@
-export * from './components/dark_mode_docs_container.js'
 export * from './constants.js'
 export * from './parameters.js'
 export type * from './types.js'

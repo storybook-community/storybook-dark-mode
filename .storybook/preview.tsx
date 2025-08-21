@@ -1,4 +1,4 @@
-import { DarkModeDocsContainer } from '#storybook-community/storybook-dark-mode'
+import { DarkModeDocsContainer } from '#storybook-community/storybook-dark-mode/preview'
 import type { Preview } from '@storybook/react-vite'
 
 import '../tailwind.css'
