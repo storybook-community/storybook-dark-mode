@@ -6,5 +6,10 @@ export default {
 	framework: {
 		name: '@storybook/react-vite',
 		options: {}
+	},
+	tags: {
+		unit: {
+			excludeFromSidebar: process.env.NODE_ENV === 'production'
+		}
 	}
 } satisfies StorybookConfig
