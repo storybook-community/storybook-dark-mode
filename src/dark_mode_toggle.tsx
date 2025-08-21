@@ -6,8 +6,8 @@ import { DOCS_RENDERED, SET_STORIES, STORY_CHANGED } from 'storybook/internal/co
 import { addons, type API, useParameter } from 'storybook/manager-api'
 import { themes } from 'storybook/theming'
 import { DARK_MODE_EVENT_NAME, UPDATE_DARK_MODE_EVENT_NAME } from './constants.js'
-import { mergeThemeWithBrandConfig } from './merge_theme_with_brand_config.js'
 import type { DarkModeStore, Mode } from './types.js'
+import { mergeThemeWithBrandConfig } from './utils/merge_theme_with_brand_config.js'
 
 const { document, window } = globalThis
 
