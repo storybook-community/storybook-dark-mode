@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.6.1
+
+### Patch Changes
+
+- [#23](https://github.com/storybook-community/storybook-dark-mode/pull/23) [`ad05f82`](https://github.com/storybook-community/storybook-dark-mode/commit/ad05f82e10be725215e8c64888c4efabce25fee6) Thanks [@rinilkunhiraman](https://github.com/rinilkunhiraman)! - Preserve brand customizations when switching themes.
+
 ## 5.6.0
 
 ### Minor Changes
