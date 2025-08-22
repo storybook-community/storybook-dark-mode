@@ -13,6 +13,14 @@ yarn add -D @storybook-community/storybook-dark-mode
 
 pnpm add -D @storybook-community/storybook-dark-mode
 ```
+Then, load the addon in your Storybook configuration file.
+
+```tsx
+// .storybook/main.ts
+export default {
+  addons: ['@storybook-community/storybook-dark-mode']
+}
+```
 
 ## Configuration
 
@@ -129,7 +137,7 @@ export const parameters = {
 
 If your components use a custom Theme provider, you can integrate it by using the provided hook.
 
-```js
+```jsx
 import { useDarkMode } from '@storybook-community/storybook-dark-mode';
 import { addDecorator } from 'storybook/react-vite';
 
@@ -146,7 +154,7 @@ function ThemeWrapper(props) {
   );
 }
 
-export const decorators = [renderStory => <ThemeWrapper>{renderStory()}</ThemeWrapper>)];
+export const decorators = [Story => <ThemeWrapper><Story /></ThemeWrapper>];
 ```
 
 #### Theme Knobs
