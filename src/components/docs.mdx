@@ -1,0 +1,22 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="API/docs/DarkModeDocsContainer" />
+
+# DarkModeDocsContainer
+
+This component is used to render the dark mode docs container.
+
+## Usage
+
+```tsx
+// .storybook/preview.tsx
+import { DarkModeDocsContainer } from '@storybook-community/storybook-dark-mode/docs'
+
+export default {
+  parameters: {
+    docs: {
+      container: DarkModeDocsContainer
+    },
+  }
+} satisfies Preview
+```
