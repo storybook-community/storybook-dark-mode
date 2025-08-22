@@ -1,5 +1,15 @@
 # Changelog
 
+## 6.0.0
+
+### Major Changes
+
+- [#26](https://github.com/storybook-community/storybook-dark-mode/pull/26) [`4fc2613`](https://github.com/storybook-community/storybook-dark-mode/commit/4fc2613b8ee53ebea8ada0c129a229bbdb5fcdfd) Thanks [@unional](https://github.com/unional)! - Move `DarkModeDocsContainer` to `@storybook-community/storybook-dark-mode/docs`.
+
+  This fixes the main export requiring `@storybook/addon-docs` which you may not need.
+
+  BREAKING CHANGE: Move `DarkModeDocsContainer` from the main export to `/docs` sub-path.
+
 ## 5.6.1
 
 ### Patch Changes
