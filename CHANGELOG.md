@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.0.1
+
+### Patch Changes
+
+- [`224a850`](https://github.com/storybook-community/storybook-dark-mode/commit/224a85079963c4448b583a1808d92f946e9db610) - Fix preset to load in ESM.
+
 ## 6.0.0
 
 ### Major Changes
