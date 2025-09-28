@@ -1,5 +1,13 @@
 # Changelog
 
+## 6.0.2
+
+### Patch Changes
+
+- [`66f32b4`](https://github.com/storybook-community/storybook-dark-mode/commit/66f32b44fceb7205ef1409ef622dce7bf50e9626) - Remove default export that cause problem in cjs usage.
+
+  fix #29
+
 ## 6.0.1
 
 ### Patch Changes
