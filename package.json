@@ -51,7 +51,7 @@
 				"default": "./cjs/docs/index.js"
 			}
 		},
-		"./preset": "./preset.cjs",
+		"./preset": "./preset.js",
 		"./package.json": "./package.json"
 	},
 	"main": "./cjs/index.js",
@@ -61,7 +61,7 @@
 		"cjs",
 		"esm",
 		"src",
-		"preset.cjs",
+		"preset.js",
 		"!**/*.{spec,stories}.*"
 	],
 	"scripts": {
