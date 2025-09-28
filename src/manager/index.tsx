@@ -2,7 +2,7 @@ import React from 'react'
 import { Addon_TypesEnum } from 'storybook/internal/types'
 import { addons } from 'storybook/manager-api'
 import { themes } from 'storybook/theming'
-import DarkModeToggle, { prefersDark, store } from '../dark_mode_toggle.js'
+import { DarkModeToggle, prefersDark, store } from '../dark_mode_toggle.js'
 
 const currentStore = store()
 const currentTheme = currentStore.current || (prefersDark.matches && 'dark') || 'light'

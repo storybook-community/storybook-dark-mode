@@ -3,7 +3,7 @@ import equal from 'fast-deep-equal'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { IconButton } from 'storybook/internal/components'
 import { DOCS_RENDERED, SET_STORIES, STORY_CHANGED } from 'storybook/internal/core-events'
-import { addons, type API, useParameter } from 'storybook/manager-api'
+import { type API, addons, useParameter } from 'storybook/manager-api'
 import { themes } from 'storybook/theming'
 import { DARK_MODE_EVENT_NAME, UPDATE_DARK_MODE_EVENT_NAME } from './constants.js'
 import type { DarkModeStore, Mode } from './types.js'
@@ -128,7 +128,9 @@ export function DarkModeToggle({ api }: DarkModeProps) {
 		(mode: Mode) => {
 			const currentStore = store()
 
-			api.setOptions({ theme: mergeThemeWithBrandConfig(currentStore[mode], addons.getConfig()?.theme) })
+			api.setOptions({
+				theme: mergeThemeWithBrandConfig(currentStore[mode], addons.getConfig()?.theme)
+			})
 			setDark(mode === 'dark')
 			api.getChannel().emit(DARK_MODE_EVENT_NAME, mode === 'dark')
 			updateManager(currentStore)
@@ -232,5 +234,3 @@ export function DarkModeToggle({ api }: DarkModeProps) {
 		</IconButton>
 	)
 }
-
-export default DarkModeToggle
