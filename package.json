@@ -61,7 +61,7 @@
 		"cjs",
 		"esm",
 		"src",
-		"preset.js",
+		"preset.cjs",
 		"!**/*.{spec,stories}.*"
 	],
 	"scripts": {

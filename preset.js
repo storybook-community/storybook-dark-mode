@@ -1,7 +1,3 @@
-function managerEntries(entry = []) {
+export function managerEntries(entry = []) {
 	return [...entry, require.resolve('./esm/manager')]
-}
-
-module.exports = {
-	managerEntries
 }
