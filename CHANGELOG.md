@@ -1,5 +1,13 @@
 # Changelog
 
+## 6.0.3
+
+### Patch Changes
+
+- [#33](https://github.com/storybook-community/storybook-dark-mode/pull/33) [`b4c77df`](https://github.com/storybook-community/storybook-dark-mode/commit/b4c77df41408c22919fc4cb7e856f2d038e7aeba) Thanks [@unional](https://github.com/unional)! - Restore `preset.cjs` and update `preset.js` to proper ESM.
+
+  The change in 6.0.1 somehow fix `TypeError: Cannot read properties of undefined (reading 'matchMedia')` but obviously invalid for CJS usage.
+
 ## 6.0.2
 
 ### Patch Changes
