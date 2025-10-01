@@ -1,5 +1,13 @@
 # Changelog
 
+## 6.0.7
+
+### Patch Changes
+
+- [`f18bdd6`](https://github.com/storybook-community/storybook-dark-mode/commit/f18bdd6eae6a67402057391d41a1f97a1a37b271) Thanks [@unional](https://github.com/unional)! - Replace `import.meta.resolve` with `require.resolve` for manager entries again.
+
+  Tested in some repos that `require.resolve` works while `import.meta.resolve` doesn't.
+
 ## 6.0.6
 
 ### Patch Changes
