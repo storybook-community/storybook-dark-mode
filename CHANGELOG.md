@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.0.4
+
+### Patch Changes
+
+- [`3935c66`](https://github.com/storybook-community/storybook-dark-mode/commit/3935c66bf2876f0cc4887e60235b49f8513b86a2) Thanks [@unional](https://github.com/unional)! - Add missing `preset.js` to `files` in `package.json`.
+
 ## 6.0.3
 
 ### Patch Changes
