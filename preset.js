@@ -1,3 +1,3 @@
 export function managerEntries(entry = []) {
-	return [...entry, require.resolve('./esm/manager')]
+	return [...entry, import.meta.resolve('./esm/manager')]
 }
