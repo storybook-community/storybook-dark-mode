@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.0.6
+
+### Patch Changes
+
+- [`3c0e83f`](https://github.com/storybook-community/storybook-dark-mode/commit/3c0e83f69ed059cf2bf931d5c152c93bd66da746) Thanks [@unional](https://github.com/unional)! - Update manager import path to include index.js file.
+
 ## 6.0.5
 
 ### Patch Changes
