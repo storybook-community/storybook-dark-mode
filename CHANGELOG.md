@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.0.5
+
+### Patch Changes
+
+- [`fa13bc6`](https://github.com/storybook-community/storybook-dark-mode/commit/fa13bc64fff9661b048965ee9a0fe198b2a9a3a1) Thanks [@unional](https://github.com/unional)! - Use `import.meta.resolve` instead of `require.resolve`.
+
 ## 6.0.4
 
 ### Patch Changes
