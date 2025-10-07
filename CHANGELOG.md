@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.0.8
+
+### Patch Changes
+
+- [#39](https://github.com/storybook-community/storybook-dark-mode/pull/39) [`0e4ba2f`](https://github.com/storybook-community/storybook-dark-mode/commit/0e4ba2f24ef139e16bbd08dd355cc0afe0b3b56a) Thanks [@k-utsumi](https://github.com/k-utsumi)! - 🐛 Add createRequire for ESM compatibility in preset
+
 ## 6.0.7
 
 ### Patch Changes
