@@ -1,6 +1,6 @@
 import { addons, useEffect, useParameter, useState } from 'storybook/preview-api'
-import { DARK_MODE_EVENT_NAME } from '../constants.js'
-import { store } from '../dark_mode_toggle.js'
+import { store } from '../components/dark_mode_toggle'
+import { DARK_MODE_EVENT_NAME } from '../constants'
 
 const chan = addons.getChannel()
 

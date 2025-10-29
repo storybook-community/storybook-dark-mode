@@ -2,12 +2,11 @@ import { MoonIcon, SunIcon } from '@storybook/icons'
 import equal from 'fast-deep-equal'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { IconButton } from 'storybook/internal/components'
-import { DOCS_RENDERED, SET_STORIES, STORY_CHANGED } from 'storybook/internal/core-events'
 import { type API, addons, useParameter } from 'storybook/manager-api'
 import { themes } from 'storybook/theming'
-import { DARK_MODE_EVENT_NAME, UPDATE_DARK_MODE_EVENT_NAME } from './constants.js'
-import type { DarkModeStore, Mode } from './types.js'
-import { mergeThemeWithBrandConfig } from './utils/merge_theme_with_brand_config.js'
+import { DARK_MODE_EVENT_NAME, UPDATE_DARK_MODE_EVENT_NAME } from '../constants'
+import type { DarkModeStore, Mode } from '../types'
+import { mergeThemeWithBrandConfig } from '../utils/merge_theme_with_brand_config'
 
 const { document, window } = globalThis
 
@@ -120,7 +119,7 @@ export function DarkModeToggle({ api }: DarkModeProps) {
 	const darkModeParams = useParameter<Partial<DarkModeStore>>('darkMode', {})
 	const { current: defaultMode, stylePreview, ...params } = darkModeParams
 	const docs = useParameter<{ theme?: { base: 'dark' | 'light' } }>('docs')
-	const channel = api.getChannel()
+	const channel = addons.getChannel()
 	// Save custom themes on init
 	const userHasExplicitlySetTheTheme = useMemo(() => store(params).userHasExplicitlySetTheTheme, [params])
 	/** Set the theme in storybook, update the local state, and emit an event */
@@ -132,7 +131,7 @@ export function DarkModeToggle({ api }: DarkModeProps) {
 				theme: mergeThemeWithBrandConfig(currentStore[mode], addons.getConfig()?.theme)
 			})
 			setDark(mode === 'dark')
-			api.getChannel().emit(DARK_MODE_EVENT_NAME, mode === 'dark')
+			channel.emit(DARK_MODE_EVENT_NAME, mode === 'dark')
 			updateManager(currentStore)
 			if (stylePreview) {
 				updatePreview(currentStore)
@@ -187,14 +186,14 @@ export function DarkModeToggle({ api }: DarkModeProps) {
 		renderTheme()
 	}, [darkModeParams, renderTheme])
 	useEffect(() => {
-		channel.on(STORY_CHANGED, renderTheme)
-		channel.on(SET_STORIES, renderTheme)
-		channel.on(DOCS_RENDERED, renderTheme)
+		channel.on('storyChanged', renderTheme)
+		channel.on('setStories', renderTheme)
+		channel.on('docsRendered', renderTheme)
 		prefersDark.addListener(prefersDarkUpdate)
 		return () => {
-			channel.removeListener(STORY_CHANGED, renderTheme)
-			channel.removeListener(SET_STORIES, renderTheme)
-			channel.removeListener(DOCS_RENDERED, renderTheme)
+			channel.removeListener('storyChanged', renderTheme)
+			channel.removeListener('setStories', renderTheme)
+			channel.removeListener('docsRendered', renderTheme)
 			prefersDark.removeListener(prefersDarkUpdate)
 		}
 	})

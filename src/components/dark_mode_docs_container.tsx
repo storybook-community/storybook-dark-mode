@@ -1,12 +1,9 @@
 import { DocsContainer, type DocsContainerProps } from '@storybook/addon-docs/blocks'
 import React, { useEffect, useState, type PropsWithChildren } from 'react'
-import type { Renderer } from 'storybook/internal/types'
-import { DARK_MODE_EVENT_NAME } from '../constants.js'
-import { store } from '../dark_mode_toggle.js'
+import { DARK_MODE_EVENT_NAME } from '../constants'
+import { store } from './dark_mode_toggle'
 
-export function DarkModeDocsContainer<TRenderer extends Renderer = Renderer>(
-	props: PropsWithChildren<DocsContainerProps<TRenderer>>
-) {
+export function DarkModeDocsContainer(props: PropsWithChildren<DocsContainerProps>) {
 	const s = store()
 	const [isDark, setDark] = useState(s.current === 'dark')
 
