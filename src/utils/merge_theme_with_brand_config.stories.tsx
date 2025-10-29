@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@repobuddy/storybook/storybook-addon-tag-badges'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import React from 'react'
-import type { ThemeVars } from 'storybook/internal/theming'
 import { expect } from 'storybook/test'
-import { mergeThemeWithBrandConfig } from './merge_theme_with_brand_config.js'
+import type { ThemeVars } from 'storybook/theming'
+import { mergeThemeWithBrandConfig } from './merge_theme_with_brand_config'
 
 // Simple component to render for the stories
 const TestComponent = () => <div>Testing mergeThemeWithBrandConfig function</div>

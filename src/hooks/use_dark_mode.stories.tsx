@@ -1,6 +1,6 @@
-import { useDarkMode } from '#storybook-community/storybook-dark-mode'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import React from 'react'
+import { useDarkMode } from './use_dark_mode'
 
 export default {
 	title: 'api/main/useDarkMode'

@@ -1,4 +1,4 @@
-import type { ThemeVars } from 'storybook/internal/theming'
+import type { ThemeVars } from 'storybook/theming'
 
 /**
  * Merges store theme with brand configuration from Storybook config
