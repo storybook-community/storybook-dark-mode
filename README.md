@@ -3,7 +3,7 @@
 A storybook addons that lets your users toggle between dark and light mode.
 
 > [!NOTE]
-> This is a fork of [storybook-dark-mode](https://github.com/hipstersmoothie/storybook-dark-mode) by [@hipstersmoothie](https://github.com/hipstersmoothie) to support Storybook 9.
+> This is a fork of [storybook-dark-mode](https://github.com/hipstersmoothie/storybook-dark-mode) by [@hipstersmoothie](https://github.com/hipstersmoothie) to support Storybook 9 and newer.
 >
 > This fork focus on maintaining compatibility with Storybook and security updates.
 >
@@ -25,19 +25,22 @@ or with yarn:
 yarn add -D @storybook-community/storybook-dark-mode
 ```
 
-Then, add following content to `.storybook/main.js`
+Then, add following content to `.storybook/main.ts`
 
-```js
-module.exports = {
+```ts
+// .storybook/main.ts
+export default {
   addons: ['@storybook-community/storybook-dark-mode']
 };
 ```
 
 ## Configuration
 
-Configure the dark and light mode by adding the following to your `.storybook/preview.js` file:
+Configure the dark and light mode by adding the following to your `.storybook/preview.ts` file:
 
-```js
+### CSF 3
+```ts
+// .storybook/preview.ts
 import { themes } from 'storybook/theming';
 
 export const parameters = {
@@ -48,6 +51,27 @@ export const parameters = {
     light: { ...themes.normal, appBg: 'red' }
   }
 };
+```
+
+### CSF Next
+```ts
+// .storybook/preview.ts
+import { definePreview } from '@storybook/your-framework';
+import addonDarkMode from '@storybook-community/storybook-dark-mode'
+import addonDocs from '@storybook/addon-docs'
+
+export default definePreview({
+  // Load addon annotations
+  addons: [addonDarkMode(), addonDocs()],
+  parameters: {
+    darkMode: {
+      // Override the default dark theme
+      dark: { ...themes.dark, appBg: 'black' },
+      // Override the default light theme
+      light: { ...themes.normal, appBg: 'red' }
+    },
+  },
+});
 ```
 
 ### Default Theme
@@ -61,7 +85,8 @@ Order of precedence for the initial color scheme:
 Once the initial color scheme has been set, subsequent reloads will use this value.
 To clear the cached color scheme you have to `localStorage.clear()` in the chrome console.
 
-```js
+```ts
+// .storybook/preview.ts
 export const parameters = {
   darkMode: {
     // Set the initial theme

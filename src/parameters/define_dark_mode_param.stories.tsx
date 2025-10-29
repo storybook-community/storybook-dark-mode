@@ -1,6 +1,6 @@
-import { type DarkModeParam, defineDarkModeParam } from '#storybook-community/storybook-dark-mode'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import React from 'react'
+import { type DarkModeParam, defineDarkModeParam } from './define_dark_mode_param'
 
 export default {
 	title: 'api/main/defineDarkModeParam',
