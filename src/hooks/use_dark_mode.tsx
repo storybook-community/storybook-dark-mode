@@ -9,15 +9,16 @@ const chan = addons.getChannel()
  */
 export function useDarkMode(): boolean {
 	const docs = useParameter<{ theme?: { base: 'light' | 'dark' } }>('docs')
-	if (docs?.theme?.base) {
-		return docs.theme.base === 'dark'
-	}
 	const [isDark, setIsDark] = useState(store().current === 'dark')
 
 	useEffect(() => {
 		chan.on(DARK_MODE_EVENT_NAME, setIsDark)
 		return () => chan.off(DARK_MODE_EVENT_NAME, setIsDark)
 	}, [])
+
+	if (docs?.theme?.base) {
+		return docs.theme.base === 'dark'
+	}
 
 	return isDark
 }
