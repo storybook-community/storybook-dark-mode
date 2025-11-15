@@ -7,7 +7,9 @@ addons.setConfig({
 	theme: {
 		...themes.dark,
 		brandTitle:
-			'<span style="display: flex; align-items: center; gap: 8px;"><img src="https://avatars.githubusercontent.com/u/216219414?s=16&v=4" alt="Dark Mode" />storybook-dark-mode</span>',
+			`<span style="display: flex; align-items: center; gap: 8px;"><img src="https://avatars.githubusercontent.com/u/216219414?s=16&v=4" alt="Dark Mode" />
+				<div>@storybook-community/<br/>storybook-dark-mode</div>
+			</span>`,
 		brandTarget: '_blank',
 		brandUrl: 'https://github.com/storybook-community/storybook-dark-mode'
 	}

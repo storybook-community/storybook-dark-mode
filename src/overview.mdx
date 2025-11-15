@@ -1,13 +1,6 @@
-import { Meta } from '@storybook/addon-docs/blocks'
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
+import README from '../README.md?raw'
 
 <Meta title="Overview" />
 
-# @storybook-community/storybook-dark-mode
-
-A storybook addon that lets your users toggle between dark and light mode.
-
-It is a fork of the [storybook-dark-mode](https://github.com/hipstersmoothie/storybook-dark-mode) package originally created by [@hipstersmoothie](https://github.com/hipstersmoothie).
-
-This fork focuses on maintaining compatibility with Storybook and security updates.
-
-It also has a few improvements over the original addon.
+<Markdown>{README}</Markdown>
