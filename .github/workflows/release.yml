@@ -26,6 +26,7 @@ jobs:
         run: |
           yarn install --frozen-lockfile
       - run: yarn build
+      - run: yarn test
       - name: update .npmrc with token
         run: |
           cat << EOF > "$HOME/.npmrc"
