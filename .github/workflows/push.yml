@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  verify:
     runs-on: ubuntu-latest
     env:
       PLAYWRIGHT_PATH: ~/.cache/ms-playwright
