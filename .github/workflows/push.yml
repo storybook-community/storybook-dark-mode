@@ -20,3 +20,4 @@ jobs:
           yarn
           yarn build
           yarn lint
+          yarn test

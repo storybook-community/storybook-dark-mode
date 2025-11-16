@@ -52,6 +52,7 @@
 		"build": "tsup",
 		"build:watch": "yarn build --watch",
 		"clean": "rimraf dist",
+		"cov": "vitest run --coverage",
 		"cs": "changeset",
 		"lint": "biome check",
 		"nuke": "yarn clean && rimraf node_modules",
@@ -62,8 +63,9 @@
 		"sb": "storybook dev",
 		"sb:build": "cross-env NODE_ENV=production storybook build",
 		"storybook": "storybook dev -p 6006",
-		"test": "vitest run",
-		"watch": "vitest"
+		"t": "vitest run",
+		"w": "vitest",
+		"v": "run-s lint build cov"
 	},
 	"dependencies": {
 		"@storybook/icons": "^1.6.0",
@@ -85,6 +87,8 @@
 		"@types/react": "^19.2.2",
 		"@types/react-dom": "^19.2.2",
 		"@vitest/browser": "^4.0.5",
+		"@vitest/browser-playwright": "^4.0.9",
+		"@vitest/coverage-v8": "4.0.9",
 		"all-contributors-cli": "^6.24.0",
 		"cross-env": "^10.0.0",
 		"dedent": "^1.7.0",
