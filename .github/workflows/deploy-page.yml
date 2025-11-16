@@ -31,13 +31,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
         with:
-          node-version: 22
-          cache: yarn
-      - run: yarn install
-      - run: yarn build
-      - run: yarn sb:build
+          node-version: 22.x
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm build
+      - run: pnpm sb:build
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
