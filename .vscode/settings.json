@@ -59,5 +59,6 @@
 	"files.associations": {
 		"*.css": "tailwindcss"
 	},
-	"git.alwaysSignOff": true
+	"git.alwaysSignOff": true,
+	"githubPullRequests.createDefaultBaseBranch": "createdFromBranch"
 }
