@@ -16,10 +16,13 @@ jobs:
       - name: Prepare repository
         run: git fetch --unshallow --tags
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
       - name: Use Node.js 22.x
         uses: actions/setup-node@v4
         with:
           node-version: 22.x
+          cache: 'pnpm'
       - name: Cache Playwright Browsers
         uses: actions/cache@v4
         id: cache-playwright
@@ -28,16 +31,16 @@ jobs:
           key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Install playwright browsers
         if: steps.cache-playwright.outputs.cache-hit != 'true'
-        run: yarn playwright install --with-deps chromium
+        run: pnpm playwright install --with-deps chromium
 
       - name: Create Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          yarn install --frozen-lockfile
-      - run: yarn build
-      - run: yarn test
+          pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm test
       - name: update .npmrc with token
         run: |
           cat << EOF > "$HOME/.npmrc"
@@ -49,7 +52,7 @@ jobs:
         uses: changesets/action@v1
         with:
           commit: 'chore: version packages'
-          version: yarn run version
-          publish: yarn run release
+          version: pnpm run version
+          publish: pnpm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

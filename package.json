@@ -49,15 +49,15 @@
 		"*.d.ts"
 	],
 	"scripts": {
-		"prebuild": "yarn clean",
+		"prebuild": "pnpm clean",
 		"build": "tsup",
-		"build:watch": "yarn build --watch",
+		"build:watch": "pnpm build --watch",
 		"clean": "rimraf dist",
 		"cov": "vitest run --coverage",
 		"cs": "changeset",
 		"lint": "biome check",
-		"nuke": "yarn clean && rimraf node_modules",
-		"prepack": "yarn build",
+		"nuke": "pnpm clean && rimraf node_modules",
+		"prepack": "pnpm build",
 		"release": "changeset publish",
 		"sb": "storybook dev",
 		"sb:build": "cross-env NODE_ENV=production storybook build",
@@ -117,7 +117,7 @@
 			"optional": true
 		}
 	},
-	"packageManager": "yarn@1.22.22",
+	"packageManager": "pnpm@10.22.0",
 	"bundler": {
 		"managerEntries": [
 			"src/manager.tsx"

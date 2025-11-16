@@ -12,10 +12,13 @@ jobs:
       PLAYWRIGHT_PATH: ~/.cache/ms-playwright
     steps:
       - uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
       - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
           node-version: 22.x
+          cache: 'pnpm'
       - name: Cache Playwright Browsers
         uses: actions/cache@v4
         id: cache-playwright
@@ -24,10 +27,10 @@ jobs:
           key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Install playwright browsers
         if: steps.cache-playwright.outputs.cache-hit != 'true'
-        run: yarn playwright install --with-deps chromium
-      - name: npm install, build, and lint
+        run: pnpm playwright install --with-deps chromium
+      - name: pnpm install, build, and lint
         run: |
-          yarn
-          yarn build
-          yarn lint
-          yarn test
+          pnpm install --frozen-lockfile
+          pnpm build
+          pnpm lint
+          pnpm test
