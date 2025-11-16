@@ -8,6 +8,8 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      PLAYWRIGHT_PATH: ~/.cache/ms-playwright
     steps:
       - uses: actions/checkout@v4
 
@@ -18,6 +20,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22.x
+      - name: Cache Playwright Browsers
+        uses: actions/cache@v4
+        id: cache-playwright
+        with:
+          path: ${{ env.PLAYWRIGHT_PATH }}
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - name: Install playwright browsers
+        if: steps.cache-playwright.outputs.cache-hit != 'true'
+        run: yarn playwright install --with-deps chromium
 
       - name: Create Release
         env:
