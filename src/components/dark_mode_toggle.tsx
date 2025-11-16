@@ -5,8 +5,8 @@ import { IconButton } from 'storybook/internal/components'
 import { type API, addons, useParameter } from 'storybook/manager-api'
 import { themes } from 'storybook/theming'
 import { DARK_MODE_EVENT_NAME, UPDATE_DARK_MODE_EVENT_NAME } from '../constants'
+import { mergeThemeWithBrandConfig } from '../internal/utils/merge_theme_with_brand_config'
 import type { DarkModeStore, Mode } from '../types'
-import { mergeThemeWithBrandConfig } from '../utils/merge_theme_with_brand_config'
 
 const { document, window } = globalThis
 

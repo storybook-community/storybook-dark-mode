@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="preview/addons" />
+
+# addons
+
+For Storybook 10, we provie a `addonDarkMode()` that setup the dark mode support for you.
+
+```tsx
+// .storybook/preview.tsx
+import { definePreview } from '@storybook/your-framework'
+import addonDarkMode from '@storybook-community/storybook-dark-mode'
+
+export default definePreview({
+  addons: [addonDarkMode()]
+})
+```
+
+Currently, it adds the dark mode container to your documents.

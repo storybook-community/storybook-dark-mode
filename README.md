@@ -131,8 +131,6 @@ export const parameters = {
 };
 ```
 
-## Story integration
-
 ### Preview `ClassName`
 
 This plugin will apply the `darkClass` and `lightClass` classes to the preview iframe if you turn on the `stylePreview` option.
@@ -143,6 +141,17 @@ export const parameters = {
     stylePreview: true
   }
 };
+```
+
+### Support for Docs mode
+
+```js
+// .storybook/preview.ts
+export const parameters = {
+  docs: {
+    container: DarkModeDocsContainer
+  }
+}
 ```
 
 ### React
@@ -174,6 +183,7 @@ export const decorators = [renderStory => <ThemeWrapper>{renderStory()}</ThemeWr
 If you want to have your UI's dark mode separate from your components' dark mode, implement this global decorator:
 
 ```js
+import { createElement } from 'react'
 import { themes } from 'storybook/theming'
 
 // Add a global decorator that will render a dark background when the
@@ -183,12 +193,12 @@ const knobDecorator = storyFn => {
   const colorScheme = select('Color Scheme', ['light', 'dark'], 'light')
 
   // Hook your theme provider with some knobs
-  return React.createElement(ThemeProvider, {
+  return createElement(ThemeProvider, {
     // A knob for theme added to every story
     theme: select('Theme', Object.keys(themes), 'default'),
     colorScheme,
     children: [
-      React.createElement('style', {
+      createElement('style', {
         dangerouslySetInnerHTML: {
           __html: `html { ${
             colorScheme === 'dark' ? 'background-color: rgb(35,35,35);' : ''
@@ -238,47 +248,4 @@ function ThemeWrapper(props) {
 }
 
 export const decorators = [renderStory => <ThemeWrapper>{renderStory()}</ThemeWrapper>)]
-```
-
-Since in docs mode, Storybook will not display its toolbar,
-You can also trigger the `UPDATE_DARK_MODE` event via the addons channel if you want to control that option in docs mode,
-By editing your `.storybook/preview.js`.
-
-```js
-import React from 'react'
-import { DocsContainer } from '@storybook/addon-docs'
-import { themes } from '@storybook/theming'
-import { DARK_MODE_EVENT_NAME, UPDATE_DARK_MODE_EVENT_NAME } from '@storybook-community/storybook-dark-mode'
-import { addons } from 'storybook/preview-api'
-
-const channel = addons.getChannel()
-
-export const parameters = {
-  darkMode: {
-    current: 'light',
-    dark: { ...themes.dark },
-    light: { ...themes.light }
-  },
-  docs: {
-    container: props => {
-      const [isDark, setDark] = React.useState()
-
-      const onChangeHandler = () => {
-        channel.emit(UPDATE_DARK_MODE_EVENT_NAME)
-      }
-
-      React.useEffect(() => {
-        channel.on(DARK_MODE_EVENT_NAME, setDark)
-        return () => channel.removeListener(DARK_MODE_EVENT_NAME, setDark)
-      }, [channel, setDark])
-
-      return (
-        <div>
-          <input type="checkbox" onChange={onChangeHandler} />
-          <DocsContainer {...props} />
-        </div>
-      )
-    }
-  }
-}
 ```
