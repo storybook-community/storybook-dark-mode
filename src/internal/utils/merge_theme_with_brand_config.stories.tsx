@@ -8,7 +8,7 @@ import { mergeThemeWithBrandConfig } from './merge_theme_with_brand_config'
 const TestComponent = () => <div>Testing mergeThemeWithBrandConfig function</div>
 
 const meta: Meta<typeof TestComponent> = {
-	title: 'utils/mergeThemeWithBrandConfig',
+	title: 'internal/utils/mergeThemeWithBrandConfig',
 	tags: ['unit'],
 	component: TestComponent,
 	parameters: {
