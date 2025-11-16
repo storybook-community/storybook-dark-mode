@@ -49,6 +49,7 @@
 		"*.d.ts"
 	],
 	"scripts": {
+		"prebuild": "yarn clean",
 		"build": "tsup",
 		"build:watch": "yarn build --watch",
 		"clean": "rimraf dist",
@@ -56,16 +57,16 @@
 		"cs": "changeset",
 		"lint": "biome check",
 		"nuke": "yarn clean && rimraf node_modules",
-		"prebuild": "yarn clean",
 		"prepack": "yarn build",
 		"release": "changeset publish",
-		"version": "changeset version",
 		"sb": "storybook dev",
 		"sb:build": "cross-env NODE_ENV=production storybook build",
 		"storybook": "storybook dev -p 6006",
 		"t": "vitest run",
-		"w": "vitest",
-		"v": "run-s lint build cov"
+		"test": "vitest run",
+		"v": "run-s lint build cov",
+		"version": "changeset version",
+		"w": "vitest"
 	},
 	"dependencies": {
 		"@storybook/icons": "^1.6.0",
@@ -116,6 +117,7 @@
 			"optional": true
 		}
 	},
+	"packageManager": "yarn@1.22.22",
 	"bundler": {
 		"managerEntries": [
 			"src/manager.tsx"
@@ -127,7 +129,6 @@
 		],
 		"nodeEntries": []
 	},
-	"packageManager": "yarn@1.22.22",
 	"storybook": {
 		"displayName": "Dark mode (community version)",
 		"supportedFrameworks": [
