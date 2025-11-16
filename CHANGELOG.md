@@ -1,5 +1,17 @@
 # Changelog
 
+## 7.0.0
+
+### Major Changes
+
+- [#45](https://github.com/storybook-community/storybook-dark-mode/pull/45) [`1ea561e`](https://github.com/storybook-community/storybook-dark-mode/commit/1ea561e8ae53c70928b81e99855bee0c25e8cbcd) Thanks [@Sidnioulz](https://github.com/Sidnioulz)! - Port to Storybook 10
+
+  BREAKING CHANGE: This package now requires Storybook 10 and is ESM-only.
+
+### Patch Changes
+
+- [#48](https://github.com/storybook-community/storybook-dark-mode/pull/48) [`8a6091b`](https://github.com/storybook-community/storybook-dark-mode/commit/8a6091bc41d02bcecba8f185587dce104d6ee4ca) Thanks [@unional](https://github.com/unional)! - Update useState initialization in DarkModeDocsContainer and useDarkMode hook
+
 ## 6.0.8
 
 ### Patch Changes
