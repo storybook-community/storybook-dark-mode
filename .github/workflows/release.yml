@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PLAYWRIGHT_PATH: ~/.cache/ms-playwright
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - uses: actions/checkout@v4
 
@@ -23,6 +25,7 @@ jobs:
         with:
           node-version: 22.x
           cache: 'pnpm'
+      - run: pnpm install
       - name: Cache Playwright Browsers
         uses: actions/cache@v4
         id: cache-playwright
@@ -32,13 +35,6 @@ jobs:
       - name: Install playwright browsers
         if: steps.cache-playwright.outputs.cache-hit != 'true'
         run: pnpm playwright install --with-deps chromium
-
-      - name: Create Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          pnpm install --frozen-lockfile
       - run: pnpm build
       - run: pnpm test
       - name: update .npmrc with token

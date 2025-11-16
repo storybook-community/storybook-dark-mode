@@ -19,6 +19,7 @@ jobs:
         with:
           node-version: 22.x
           cache: 'pnpm'
+      - run: pnpm install
       - name: Cache Playwright Browsers
         uses: actions/cache@v4
         id: cache-playwright
@@ -28,9 +29,6 @@ jobs:
       - name: Install playwright browsers
         if: steps.cache-playwright.outputs.cache-hit != 'true'
         run: pnpm playwright install --with-deps chromium
-      - name: pnpm install, build, and lint
-        run: |
-          pnpm install --frozen-lockfile
-          pnpm build
-          pnpm lint
-          pnpm test
+      - run: pnpm build
+      - run: pnpm lint
+      - run: pnpm test
