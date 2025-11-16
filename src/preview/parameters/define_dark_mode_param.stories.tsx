@@ -62,7 +62,7 @@ export const SimpleUsage: Story = {
 						parameters: defineDarkModeParam(args)
 					}`}</code>
 				</pre>
-				<p>
+				<div>
 					<code>
 						{'// Result'}
 						<pre>
@@ -76,7 +76,7 @@ export const SimpleUsage: Story = {
 							)}
 						</pre>
 					</code>
-				</p>
+				</div>
 			</div>
 		)
 	}
