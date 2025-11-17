@@ -1,23 +1,30 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "target": "esnext", // Node 20 according to https://github.com/microsoft/TypeScript/wiki/Node-Target-Mapping#node-20
-    "allowJs": true,
-    "resolveJsonModule": true,
-    "moduleDetection": "force",
-    "moduleResolution": "bundler",
-    "module": "preserve",
-    "jsx": "react",
-    "isolatedModules": true,
-    "verbatimModuleSyntax": true,
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
-    "noImplicitAny": true,
-    "lib": ["esnext", "dom", "dom.iterable"],
+    // "allowJs": true,
     "baseUrl": ".",
-    "rootDir": "."
+    // "esModuleInterop": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable"
+    ],
+    "module": "preserve",
+    // "moduleDetection": "force",
+    "moduleResolution": "bundler",
+    "noImplicitAny": true,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "resolveJsonModule": true,
+    "rootDir": ".",
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "esnext", // Node 20 according to https://github.com/microsoft/TypeScript/wiki/Node-Target-Mapping#node-20
+    "verbatimModuleSyntax": true
   },
-  "include": ["src/**/*", "tsup.config.ts"]
+  "include": [
+    "src/**/*",
+    "tsup.config.ts"
+  ]
 }

@@ -5,4 +5,4 @@ import * as projectAnnotations from './preview'
 // https://github.com/storybookjs/storybook/issues/33057
 const annotations = setProjectAnnotations([projectAnnotations as any])
 
-beforeAll(() => annotations.beforeAll())
+beforeAll(annotations.beforeAll)
