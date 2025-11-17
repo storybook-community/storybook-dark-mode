@@ -52,7 +52,7 @@
 		"prebuild": "pnpm clean",
 		"build": "tsup",
 		"build:watch": "pnpm build --watch",
-		"clean": "rimraf dist cjs esm storybook-static",
+		"clean": "rimraf dist coverage cjs esm storybook-static",
 		"cov": "vitest run --coverage",
 		"cs": "changeset",
 		"lint": "biome check",
