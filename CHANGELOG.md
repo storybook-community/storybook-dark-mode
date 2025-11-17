@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.0.2
+
+### Patch Changes
+
+- [#52](https://github.com/storybook-community/storybook-dark-mode/pull/52) [`b1b47bf`](https://github.com/storybook-community/storybook-dark-mode/commit/b1b47bf53361dcfa30a1509aa1e3a4a409cf0240) Thanks [@unional](https://github.com/unional)! - Address share import issues.
+
+- [#52](https://github.com/storybook-community/storybook-dark-mode/pull/52) [`d52dac8`](https://github.com/storybook-community/storybook-dark-mode/commit/d52dac883f2ddda3808f95e558aebb9d79465f38) Thanks [@unional](https://github.com/unional)! - Update `@storybook/icons` to 2.0.1
+
 ## 7.0.1
 
 ### Patch Changes
