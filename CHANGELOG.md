@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.0.1
+
+### Patch Changes
+
+- [#50](https://github.com/storybook-community/storybook-dark-mode/pull/50) [`9939aa2`](https://github.com/storybook-community/storybook-dark-mode/commit/9939aa2cbcf60db73534c1fbdc1cbebf16fe5244) Thanks [@unional](https://github.com/unional)! - Add constants back
+
 ## 7.0.0
 
 ### Major Changes
