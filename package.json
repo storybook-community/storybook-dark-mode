@@ -52,7 +52,7 @@
 		"prebuild": "pnpm clean",
 		"build": "tsup",
 		"build:watch": "pnpm build --watch",
-		"clean": "rimraf dist",
+		"clean": "rimraf dist cjs esm storybook-static",
 		"cov": "vitest run --coverage",
 		"cs": "changeset",
 		"lint": "biome check",
@@ -69,7 +69,7 @@
 		"w": "vitest"
 	},
 	"dependencies": {
-		"@storybook/icons": "^1.6.0",
+		"@storybook/icons": "^2.0.1",
 		"fast-deep-equal": "^3.1.3"
 	},
 	"devDependencies": {
