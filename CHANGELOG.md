@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.0.3
+
+### Patch Changes
+
+- [#54](https://github.com/storybook-community/storybook-dark-mode/pull/54) [`116af86`](https://github.com/storybook-community/storybook-dark-mode/commit/116af86e42a81e24659087293ccc5ad07dbc858a) Thanks [@unional](https://github.com/unional)! - Replace `fast-deep-equal` with `dequal` to support ESM (Storybook 10).
+
 ## 7.0.2
 
 ### Patch Changes
