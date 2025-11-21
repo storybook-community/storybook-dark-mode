@@ -1,4 +1,4 @@
-import equal from 'fast-deep-equal'
+import { dequal as equal } from 'dequal'
 import { themes } from 'storybook/theming'
 import type { DarkModeStore } from '../../types'
 
