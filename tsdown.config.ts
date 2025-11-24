@@ -1,4 +1,4 @@
-import { defineConfig, type Options } from 'tsup'
+import { defineConfig, type UserConfig } from 'tsdown'
 
 const NODE_TARGET = 'node20.19' // Minimum Node version supported by Storybook 10
 
@@ -18,23 +18,22 @@ export default defineConfig(async () => {
 		bundler: { managerEntries = [], previewEntries = [], nodeEntries = [] }
 	} = packageJson
 
-	const commonConfig: Options = {
+	const commonConfig = {
 		/*
-		 keep this line commented until https://github.com/egoist/tsup/issues/1270 is resolved
+		 keep this line commented until https://github.com/egoist/tsdown/issues/1270 is resolved
 		 clean: options.watch ? false : true,
 		*/
 		clean: false,
 		format: ['esm'],
 		treeshake: true,
-		splitting: true,
 		/*
 			The following packages are provided by Storybook and should always be externalized
 			Meaning they shouldn't be bundled with the addon, and they shouldn't be regular dependencies either
 		*/
 		external: ['react', 'react-dom', '@storybook/icons']
-	}
+	} satisfies UserConfig
 
-	const configs: Options[] = []
+	const configs: UserConfig[] = []
 
 	/*
 	 manager entries are entries meant to be loaded into the manager UI
