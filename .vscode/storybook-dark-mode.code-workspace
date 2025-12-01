@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../.github"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.css": "tailwindcss"
+		},
+		"git.alwaysSignOff": true,
+		"githubPullRequests.createDefaultBaseBranch": "createdFromBranch"
+	}
+}
