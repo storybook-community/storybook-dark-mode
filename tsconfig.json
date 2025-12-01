@@ -24,7 +24,10 @@
     "verbatimModuleSyntax": true
   },
   "include": [
-    "src/**/*",
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
     "tsup.config.ts"
   ]
 }
