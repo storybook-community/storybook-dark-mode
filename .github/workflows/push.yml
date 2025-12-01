@@ -20,15 +20,9 @@ jobs:
           node-version: 22.x
           cache: 'pnpm'
       - run: pnpm install
-      - name: Cache Playwright Browsers
-        uses: actions/cache@v4
-        id: cache-playwright
-        with:
-          path: ${{ env.PLAYWRIGHT_PATH }}
-          key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Install playwright browsers
-        if: steps.cache-playwright.outputs.cache-hit != 'true'
-        run: pnpm playwright install --with-deps chromium
+        uses: storybook-community/.github/.github/actions/setup-playwright@main
+
       - run: pnpm build
       - run: pnpm lint
       - run: pnpm test
