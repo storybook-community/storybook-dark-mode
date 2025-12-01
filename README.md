@@ -1,5 +1,8 @@
 # @storybook-community/storybook-dark-mode
 
+[![NPM version][npm_image]][npm_url]
+[![NPM downloads][downloads_image]][npm_url]
+
 A storybook addon that lets your users toggle between dark and light mode.
 
 > [!NOTE]
@@ -249,3 +252,7 @@ function ThemeWrapper(props) {
 
 export const decorators = [renderStory => <ThemeWrapper>{renderStory()}</ThemeWrapper>)]
 ```
+
+[downloads_image]: https://img.shields.io/npm/dm/@storybook-community/storybook-dark-mode.svg?style=flat
+[npm_image]: https://img.shields.io/npm/v/@storybook-community/storybook-dark-mode.svg?style=flat
+[npm_url]: https://npmjs.org/package/@storybook-community/storybook-dark-mode
