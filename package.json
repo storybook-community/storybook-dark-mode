@@ -57,6 +57,7 @@
 		"cs": "changeset",
 		"lint": "biome check",
 		"nuke": "pnpm clean && rimraf node_modules",
+		"p:u": "playwright install --with-deps chromium",
 		"prepack": "pnpm build",
 		"release": "changeset publish",
 		"sb": "storybook dev",
