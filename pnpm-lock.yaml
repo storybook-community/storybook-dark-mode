@@ -36,6 +36,9 @@ importers:
       '@repobuddy/storybook':
         specifier: ^1.0.1
         version: 1.0.1(storybook-addon-tag-badges@3.0.2(storybook@10.0.7(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2))))
+      '@repobuddy/vitest':
+        specifier: ^2.0.0
+        version: 2.0.0(@vitest/browser-playwright@4.0.9)(vitest@4.0.9)
       '@storybook/addon-docs':
         specifier: ^10.0.7
         version: 10.0.7(@types/react@19.2.5)(esbuild@0.27.0)(rollup@4.53.2)(storybook@10.0.7(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)))(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2))
@@ -816,6 +819,15 @@ packages:
 
   '@repobuddy/test@1.0.0':
     resolution: {integrity: sha512-sXIAH4qO6qN/cIpYK6ZYcQrfmUT5QrALgd8YZZ7e2KiteaWgkRUv5NP++5AlaS6L7GQ6AYT+QXXlTwl+FPq9og==}
+
+  '@repobuddy/vitest@2.0.0':
+    resolution: {integrity: sha512-bNxQu+z3VDKQa65pqGI0KrDJ2y4cqrI5Or4s5etWEGB/IxvdmpgyYNY9xtRspt1JWfNYtb0gNcVGV29y6G5xjA==}
+    peerDependencies:
+      '@vitest/browser-playwright': '>= 4'
+      vitest: '>= 4'
+    peerDependenciesMeta:
+      '@vitest/browser-playwright':
+        optional: true
 
   '@rolldown/binding-android-arm64@1.0.0-beta.51':
     resolution: {integrity: sha512-Ctn8FUXKWWQI9pWC61P1yumS9WjQtelNS9riHwV7oCkknPGaAry4o7eFx2KgoLMnI2BgFJYpW7Im8/zX3BuONg==}
@@ -4118,6 +4130,13 @@ snapshots:
       storybook-addon-tag-badges: 3.0.2(storybook@10.0.7(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)))
 
   '@repobuddy/test@1.0.0': {}
+
+  '@repobuddy/vitest@2.0.0(@vitest/browser-playwright@4.0.9)(vitest@4.0.9)':
+    dependencies:
+      '@repobuddy/test': 1.0.0
+      vitest: 4.0.9(@types/node@24.10.1)(@vitest/browser-playwright@4.0.9)(jiti@2.6.1)(lightningcss@1.30.2)
+    optionalDependencies:
+      '@vitest/browser-playwright': 4.0.9(playwright@1.56.1)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2))(vitest@4.0.9)
 
   '@rolldown/binding-android-arm64@1.0.0-beta.51':
     optional: true

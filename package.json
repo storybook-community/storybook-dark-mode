@@ -81,6 +81,7 @@
 		"@commitlint/config-conventional": "^20.0.0",
 		"@repobuddy/biome": "2.0.1",
 		"@repobuddy/storybook": "^1.0.1",
+		"@repobuddy/vitest": "^2.0.0",
 		"@storybook/addon-docs": "^10.0.7",
 		"@storybook/addon-vitest": "^10.0.7",
 		"@storybook/react-vite": "^10.0.7",
