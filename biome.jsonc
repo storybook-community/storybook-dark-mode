@@ -9,14 +9,7 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"includes": [
-			".storybook/**/*.ts",
-			".storybook/**/*.tsx",
-			"src/**/*.ts",
-			"src/**/*.tsx",
-			"tsup.config.ts",
-			"vite.config.ts"
-		]
+		"includes": [".storybook/**/*.ts", ".storybook/**/*.tsx", "src/**/*.ts", "src/**/*.tsx", "*.ts"]
 	},
 	"formatter": {
 		"enabled": true,
