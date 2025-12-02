@@ -139,3 +139,6 @@ dist/
 cjs/
 esm/
 storybook-static/
+
+# Turborepo
+.turbo

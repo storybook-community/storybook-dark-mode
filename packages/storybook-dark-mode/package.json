@@ -1,0 +1,123 @@
+{
+	"name": "@storybook-community/storybook-dark-mode",
+	"version": "7.0.3",
+	"description": "Toggle between light and dark mode in Storybook",
+	"keywords": [
+		"appearance",
+		"dark-mode",
+		"dark",
+		"storybook-addon",
+		"theme"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/storybook-community/storybook-dark-mode"
+	},
+	"license": "MIT",
+	"author": {
+		"name": "Andrew Lisowski",
+		"email": "lisowski54@gmail.com"
+	},
+	"type": "module",
+	"imports": {
+		"#storybook-community/storybook-dark-mode": "./src/index.ts",
+		"#storybook-community/storybook-dark-mode/docs": "./src/docs.ts"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		},
+		"./preview": {
+			"types": "./dist/preview.d.ts",
+			"default": "./dist/preview.js"
+		},
+		"./manager": {
+			"types": "./dist/manager.d.ts",
+			"default": "./dist/manager.js"
+		},
+		"./docs": {
+			"types": "./dist/docs.d.ts",
+			"default": "./dist/docs.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"files": [
+		"dist/**/*",
+		"README.md",
+		"*.js",
+		"*.d.ts"
+	],
+	"scripts": {
+		"build": "tsdown",
+		"build:watch": "pnpm build --watch",
+		"clean": "rimraf dist coverage cjs esm storybook-static debug-storybook.log",
+		"cov": "vitest run --coverage",
+		"nuke": "pnpm clean && rimraf node_modules",
+		"sb": "storybook dev",
+		"sb:build": "cross-env NODE_ENV=production storybook build",
+		"storybook": "storybook dev -p 6006",
+		"t": "vitest run",
+		"test": "vitest run",
+		"v": "run-s lint build cov",
+		"w": "vitest"
+	},
+	"dependencies": {
+		"@storybook/icons": "^2.0.1",
+		"dequal": "^2.0.3"
+	},
+	"devDependencies": {
+		"@repobuddy/storybook": "^1.0.1",
+		"@repobuddy/vitest": "^2.0.0",
+		"@storybook/addon-docs": "^10.0.7",
+		"@storybook/addon-vitest": "^10.0.7",
+		"@storybook/react-vite": "^10.0.7",
+		"@tailwindcss/vite": "^4.1.10",
+		"@vitest/browser": "^4.0.5",
+		"@vitest/browser-playwright": "^4.0.9",
+		"@vitest/coverage-v8": "4.0.9",
+		"all-contributors-cli": "^6.24.0",
+		"cross-env": "^10.0.0",
+		"dedent": "^1.7.0",
+		"ncp": "^2.0.0",
+		"npm-run-all2": "^8.0.4",
+		"react": "^19.1.0",
+		"react-dom": "^19.1.0",
+		"rimraf": "^6.1.0",
+		"storybook": "^10.0.7",
+		"storybook-addon-tag-badges": "^3.0.1",
+		"tailwindcss": "^4.1.10",
+		"tsdown": "^0.16.6",
+		"typescript": "^5.7.3",
+		"unbuild": "^3.5.0",
+		"vite": "^7.1.12",
+		"vitest": "^4.0.5"
+	},
+	"peerDependencies": {
+		"@storybook/addon-docs": "^10.0.0",
+		"storybook": "^10.0.0"
+	},
+	"peerDependenciesMeta": {
+		"@storybook/addon-docs": {
+			"optional": true
+		}
+	},
+	"bundler": {
+		"managerEntries": [
+			"src/manager.tsx"
+		],
+		"previewEntries": [
+			"src/docs.ts",
+			"src/preview.ts",
+			"src/index.ts"
+		],
+		"nodeEntries": []
+	},
+	"storybook": {
+		"displayName": "Dark mode (community version)",
+		"supportedFrameworks": [
+			"supported-frameworks"
+		],
+		"icon": "https://avatars.githubusercontent.com/u/216219414?s=200&v=4"
+	}
+}

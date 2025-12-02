@@ -23,6 +23,6 @@ jobs:
       - name: Install playwright browsers
         uses: storybook-community/.github/.github/actions/setup-playwright@main
 
+      - run: pnpm check
       - run: pnpm build
-      - run: pnpm lint
-      - run: pnpm test
+      - run: pnpm cov

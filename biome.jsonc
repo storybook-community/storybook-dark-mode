@@ -1,15 +1,22 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.3.2/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.3.8/schema.json",
 	"extends": ["@repobuddy/biome/recommended"],
-	"vcs": {
-		"enabled": true,
-		"clientKind": "git",
-		"useIgnoreFile": true,
-		"defaultBranch": "main"
-	},
 	"files": {
 		"ignoreUnknown": false,
-		"includes": [".storybook/**/*.ts", ".storybook/**/*.tsx", "src/**/*.ts", "src/**/*.tsx", "*.ts"]
+		"includes": [
+			"!node_modules",
+			"!packages/*/coverage",
+			"!packages/*/dist",
+			"*.json",
+			"*.jsonc",
+			"*.ts",
+			"*.tsx",
+			"packages/*/.storybook/**/*.ts",
+			"packages/*/.storybook/**/*.tsx",
+			"packages/*/*.ts",
+			"packages/*/src/**/*.ts",
+			"packages/*/src/**/*.tsx"
+		]
 	},
 	"formatter": {
 		"enabled": true,
@@ -20,5 +27,11 @@
 			"trailingCommas": "none"
 		},
 		"jsxRuntime": "reactClassic"
+	},
+	"vcs": {
+		"clientKind": "git",
+		"defaultBranch": "main",
+		"enabled": true,
+		"useIgnoreFile": true
 	}
 }
