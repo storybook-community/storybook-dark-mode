@@ -6,121 +6,62 @@ alwaysApply: false
 
 # Naming Conventions
 
-This document outlines the naming conventions for files, folders, functions, and variables in this repository.
+## Files
 
-## File and Folder Names
+- **kebab-case**: `dark-mode-toggle.tsx`, `use-dark-mode.ts`
+- Descriptive names indicating purpose
+- Match primary export when possible
 
-### Files
+## Folders
 
-- **Use kebab-case** for all file names: `dark-mode-toggle.tsx`, `use-dark-mode.ts`
-- **Use descriptive names** that clearly indicate the file's purpose
-- **Match the primary export** when possible: `use-dark-mode.ts` exports `useDarkMode`
+- **kebab-case**: `dark-mode-toggle/`, `preview/`
+- Singular for component folders: `component/` not `components/`
+- Plural for utility collections: `utils/`, `hooks/`
 
-### Folders
-
-- **Use kebab-case** for folder names: `dark-mode-toggle/`, `preview/`
-- **Use singular form** for component folders: `component/` not `components/`
-- **Use plural form** for utility collections**: `utils/`, `hooks/`
-
-## TypeScript/JavaScript Naming
+## TypeScript/JavaScript
 
 ### Variables and Functions
-
-- **Use camelCase** for variables and functions: `darkMode`, `getCurrentTheme`
-- **Use descriptive names**: `isDarkMode` not `isDark`
-- **Use verb-noun pattern** for functions: `getTheme()`, `setDarkMode()`
+- **camelCase**: `darkMode`, `getCurrentTheme`
+- Descriptive: `isDarkMode` not `isDark`
+- Verb-noun for functions: `getTheme()`, `setDarkMode()`
 
 ### Types and Interfaces
-
-- **Use PascalCase** for types and interfaces: `DarkModeParam`, `ThemeVars`
-- **Use descriptive names** that indicate they are types: `DarkModeStore` not `Store`
-- **Suffix interfaces with descriptive names**: `DarkModeParam` not `Param`
+- **PascalCase**: `DarkModeParam`, `ThemeVars`
+- Descriptive type names: `DarkModeStore` not `Store`
 
 ### Constants
-
-- **Use UPPER_SNAKE_CASE** for constants: `DEFAULT_THEME`, `STORAGE_KEY`
-- **Use camelCase** for exported constants that are objects: `darkModeConfig`
+- **UPPER_SNAKE_CASE**: `DEFAULT_THEME`, `STORAGE_KEY`
+- **camelCase** for exported object constants: `darkModeConfig`
 
 ### Components
-
-- **Use PascalCase** for React components: `DarkModeToggle`, `ThemeProvider`
-- **Match file name** when component is the primary export: `DarkModeToggle.tsx` exports `DarkModeToggle`
+- **PascalCase**: `DarkModeToggle`, `ThemeProvider`
+- Match file name when primary export
 
 ## Examples
 
-### ✅ Good Examples
+✅ **Good:**
+- Files: `use-dark-mode.tsx`, `dark-mode-toggle.tsx`
+- Variables: `isDarkMode`, `getTheme()`
+- Types: `DarkModeParam`, `ThemeVars`
+- Components: `DarkModeToggle()`
 
-```
-Files:
-- use-dark-mode.tsx
-- dark-mode-toggle.tsx
-- define-dark-mode-param.ts
+❌ **Bad:**
+- Files: `useDarkMode.tsx`, `dark_mode_toggle.tsx`
+- Variables: `is_dark_mode`, `GetTheme()`
+- Types: `darkModeParam`, `theme_vars`
+- Components: `darkModeToggle()`
 
-Variables:
-- const isDarkMode = true
-- const currentTheme = 'dark'
-- function getTheme() { }
+## Storybook
 
-Types:
-- interface DarkModeParam { }
-- type ThemeVars = { }
-- type Mode = 'dark' | 'light'
+- Files: `.stories.tsx` extension, placed next to component
+- Story names: **PascalCase** (`BasicUsage`, `WithCustomTheme`), descriptive, default is `BasicUsage`
 
-Components:
-- function DarkModeToggle() { }
-- const ThemeProvider = () => { }
-```
+## Package
 
-### ❌ Bad Examples
+- Package names: kebab-case with scope: `@storybook-community/storybook-dark-mode`
+- Exports: **camelCase** named exports (`useDarkMode`), descriptive, match file names when single primary export
 
-```
-Files:
-- useDarkMode.tsx (PascalCase)
-- dark_mode_toggle.tsx (snake_case)
-- DarkModeToggle.tsx (should be kebab-case for file)
+## Integration
 
-Variables:
-- const is_dark_mode = true (snake_case)
-- const CurrentTheme = 'dark' (PascalCase for variable)
-- function GetTheme() { } (PascalCase for function)
-
-Types:
-- interface darkModeParam { } (camelCase)
-- type theme_vars = { } (snake_case)
-
-Components:
-- function darkModeToggle() { } (camelCase)
-```
-
-## Storybook-Specific Naming
-
-### Story Files
-
-- **Use `.stories.tsx` extension**: `dark-mode-toggle.stories.tsx`
-- **Place next to component**: `src/components/dark-mode-toggle/dark-mode-toggle.stories.tsx`
-- **Match component name**: Component `DarkModeToggle` → Story file `dark-mode-toggle.stories.tsx`
-
-### Story Names
-
-- **Use PascalCase** for story names: `BasicUsage`, `WithCustomTheme`
-- **Use descriptive names**: `DarkModeEnabled` not `Enabled`
-- **Default story**: Use `BasicUsage` for the primary story
-
-## Package-Specific Naming
-
-### Package Names
-
-- **Use kebab-case with scope**: `@storybook-community/storybook-dark-mode`
-- **Match repository name** when possible
-
-### Export Names
-
-- **Use camelCase** for named exports: `useDarkMode`, `defineDarkModeParam`
-- **Use descriptive names** that indicate purpose
-- **Match file names** when exporting a single primary item
-
-## Integration with Other Rules
-
-This rule works in conjunction with:
-- [TypeScript Guidelines](.cursor/rules/guidelines/typescript.mdc) - Type naming conventions
-- [Storybook Stories](.cursor/rules/guidelines/storybook-stories.mdc) - Story file naming
+- [TypeScript Guidelines](.cursor/rules/guidelines/typescript.mdc)
+- [Storybook Stories](.cursor/rules/guidelines/storybook-stories.mdc)

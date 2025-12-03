@@ -6,108 +6,48 @@ alwaysApply: false
 
 # Generate Changeset Workflow
 
-This rule provides guidelines for creating changeset files that document changes for package consumers. Changeset files are used to generate CHANGELOG entries and should focus on user-facing changes.
+Create changeset files in `.changeset/` to document user-facing changes for CHANGELOG generation.
 
-## When to Apply This Rule
+## When to Apply
 
-This rule should be applied when:
+- Changes affecting public API
+- New features or components
+- Bug fixes impacting users
+- Breaking changes
+- Dependency updates affecting functionality
 
-- Making changes to packages that affect the public API
-- Adding new features or components
-- Fixing bugs that impact users
-- Making breaking changes
-- Updating dependencies that affect functionality
-- Any change that should be documented in the package's CHANGELOG
+## File Structure
 
-## Changeset File Structure
+**Location**: `.changeset/[unique-id].md` (e.g., `add-css-utilities.md`)
 
-### File Location
-
-Changeset files should be created in the `.changeset/` directory at the repository root.
-
-### File Naming Convention
-
-- **Format**: `[unique-id].md`
-- **Example**: `add-css-utilities.md`, `fix-type-definitions.md`
-- **Unique ID**: Should be descriptive and unique across all changesets
-
-### File Content Structure
-
+**Content**:
 ```md
 ---
 "@storybook-community/storybook-dark-mode": patch
 ---
 
-[Brief description of the change for consumers]
+Brief description of the change for consumers.
 ```
 
 ## Change Types
 
-### Major Changes (`major`)
-
-- Breaking changes that require consumer action
-- API changes that break existing code
-- Removal of deprecated features
-- Major version bumps
-- Type definition changes that break existing code
-
-### Minor Changes (`minor`)
-
-- New features that are backward compatible
-- New components or utilities
-- New configuration options
-- Performance improvements
-- New type definitions or interfaces
-
-### Patch Changes (`patch`)
-
-- Bug fixes
-- Dependency updates that don't break compatibility
-- Minor type improvements that don't break existing code
+- **`major`**: Breaking changes requiring consumer action, API changes breaking existing code, removal of deprecated features, type changes breaking code
+- **`minor`**: New backward-compatible features, new components/utilities, new config options, performance improvements, new types/interfaces
+- **`patch`**: Bug fixes, dependency updates (non-breaking), minor type improvements (non-breaking)
 
 ## Content Guidelines
 
-### Target Audience
+**Target**: Package consumers. Focus on what changed and how it affects users. Clear, concise, actionable.
 
-- **Primary**: Package consumers and developers
-- **Focus**: What changed and how it affects users
-- **Tone**: Clear, concise, and actionable
+**Include**: New features/components, bug fixes, breaking changes (with migration), performance improvements, security fixes, API changes, config changes, dependency updates affecting behavior, new types, Storybook docs reflecting API changes.
 
-### What to Include
+**Exclude**: Internal refactoring, code style, test-only, docs-only (unless fixing incorrect info), build/CI/CD changes, dev tooling, Storybook-only (non-API).
 
-#### ✅ Include These Changes
+**Style**: Proper English, sentences end with period. Code in backticks. Present tense for features, past tense for fixes. Be specific about impact.
 
-- New components or features
-- Bug fixes that affect functionality
-- Breaking changes and migration steps
-- Performance improvements
-- Security fixes
-- API changes (additions, modifications, removals)
-- Configuration changes
-- Dependency updates that affect behavior
-- New type definitions or interfaces
-- Storybook documentation updates that reflect API changes
+## Examples
 
-#### ❌ Do NOT Include These Changes
-
-- Internal refactoring
-- Code style changes
-- Test-only changes
-- Documentation-only changes (unless they fix incorrect information)
-- Build process changes
-- CI/CD changes
-- Development tooling changes
-- Storybook-only changes that don't affect the API
-
-### Writing Style
-
-- The message should be proper English. Sentences should end with a period (`.`).
-- Code should be wrapped in backticks (`` ` ``).
-- Use present tense for new features and past tense for fixes.
-- Be specific about what changed and how it affects users.
-
-#### Good Examples
-
+**Good:**
 ```md
 ---
 "@storybook-community/storybook-dark-mode": minor
@@ -129,11 +69,14 @@ Fix dark mode class application to properly target preview iframe.
 "@storybook-community/storybook-dark-mode": major
 ---
 
-Remove `DarkModeStore` type from main export. It should be internal to begin with.
+Remove `DarkModeStore` type from main export. Use `DarkModeParam` instead.
+
+Migration:
+- Replace `DarkModeStore` with `DarkModeParam` in type annotations
+- Update imports if necessary
 ```
 
-#### Bad Examples
-
+**Bad:**
 ```md
 ---
 "@storybook-community/storybook-dark-mode": patch
@@ -141,155 +84,29 @@ Remove `DarkModeStore` type from main export. It should be internal to begin wit
 
 Refactor internal component structure
 ```
+(Internal refactoring - exclude)
 
-```md
----
-"@storybook-community/storybook-dark-mode": patch
----
+## Implementation
 
-Update test coverage
-```
+1. Create file: `.changeset/[descriptive-name].md`
+2. Write content: appropriate change type, consumer-focused description, migration steps for breaking changes
+3. Review: targets consumers, correct change type, all affected packages listed
 
-```md
----
-"@storybook-community/storybook-dark-mode": patch
----
+## Package-Specific
 
-Fix linting errors
-```
+**Storybook Dark Mode**: Focus on API changes (exports, types, parameters), new config options, theme handling changes, breaking changes with migration, new hooks/utilities.
 
-## Breaking Changes
-
-For breaking changes, provide clear migration guidance:
-
-```md
----
-"@storybook-community/storybook-dark-mode": major
----
-
-Remove `DarkModeStore` type from public exports. Use `DarkModeParam` type instead.
-
-Migration:
-- Replace `DarkModeStore` with `DarkModeParam` in type annotations
-- Update imports if necessary
-```
-
-## Implementation Process
-
-### 1. Create Changeset File
+## Release Process
 
 ```bash
-# Create a new changeset file
-touch .changeset/[descriptive-name].md
-```
-
-### 2. Write Content
-
-- Use the appropriate change type
-- Write clear, consumer-focused description
-- Include migration steps for breaking changes
-
-### 3. Review Changeset
-
-- Ensure it targets package consumers
-- Verify the change type is appropriate
-- Check that all affected packages are listed
-
-## Package-Specific Considerations
-
-### Storybook Dark Mode Package
-
-- Focus on API changes (exports, types, parameters)
-- Document new configuration options
-- Note changes to theme handling
-- Include breaking changes with migration steps
-- Document new hooks or utilities
-
-## Integration with Release Process
-
-### Changeset Commands
-
-```bash
-# Add a new changeset (interactive)
-pnpm cs
-
-# Generate changelog from changesets
-pnpm version
-
-# Publish packages with changesets
-pnpm release
+pnpm cs        # Add changeset (interactive)
+pnpm version   # Generate changelog
+pnpm release   # Publish packages
 ```
 
 ## Best Practices
 
-### Descriptive Names
-
-- Use clear, descriptive names for changeset files
-- Include the component or feature name
-- Use kebab-case for file names
-
-### Single Responsibility
-
-- Each changeset should cover one logical change
-- Don't combine unrelated changes in one changeset
-- Create separate changesets for different packages
-
-### Consumer Focus
-
-- Always think about how the change affects users
-- Write descriptions that help users understand the impact
-- Provide clear migration steps when needed
-
-### Consistency
-
-- Use consistent terminology across changesets
-- Follow the same format for similar types of changes
-- Maintain consistent change type usage
-
-## Examples
-
-### Adding New Feature
-
-```md
----
-"@storybook-community/storybook-dark-mode": minor
----
-
-Add new `useDarkMode` hook for accessing dark mode state in React components.
-```
-
-### Fixing Bug
-
-```md
----
-"@storybook-community/storybook-dark-mode": patch
----
-
-Fix dark mode class application to properly target preview iframe body element.
-```
-
-### Breaking Change
-
-```md
----
-"@storybook-community/storybook-dark-mode": major
----
-
-Remove `DarkModeStore` type from main export. It should be internal to begin with.
-
-Migration:
-- Replace `DarkModeStore` with `DarkModeParam` in type annotations
-- The store is now internal and not part of the public API
-```
-
-### Performance Improvement
-
-```md
----
-"@storybook-community/storybook-dark-mode": patch
----
-
-Improve theme switching performance by reducing unnecessary re-renders.
-```
-
-This rule ensures that all changes are properly documented for package consumers and that the changelog provides clear, actionable information about what changed and how it affects users.
+- **Descriptive names**: Clear, include component/feature name, kebab-case
+- **Single responsibility**: One logical change per changeset
+- **Consumer focus**: Think about user impact, provide migration steps
+- **Consistency**: Consistent terminology and format
