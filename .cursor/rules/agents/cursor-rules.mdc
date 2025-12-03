@@ -1,0 +1,200 @@
+---
+description: How to add or edit Cursor rules in our project
+globs:
+alwaysApply: false
+---
+
+# Cursor Rules Guidelines
+
+Guidelines for cursor rules in this repository.
+
+## Table of Contents
+
+- [Rules Categories](#rules-categories)
+- [Directory Structure](#directory-structure)
+- [Naming Convention](#naming-convention)
+- [Rule File Structure](#rule-file-structure)
+- [Creating New Rules](#creating-new-rules)
+
+## Rules Categories
+
+Cursor rules can be categorized based on its purpose:
+
+### Agents
+
+**Purposes**: Rules for AI agent behavior and management
+
+**Examples**: Commit Summary, Cursor Rules Guidelines, Rule Usage
+
+**When to use**: For rules that control how the AI agent should behave
+
+### Guidelines
+
+**Purposes**: Opinionated best practices on specific topics
+
+**Examples**: Commit Message, Naming Conventions, Formatting Standards, Coding Style, Best Practices
+
+**When to use**: For rules that establish standards, conventions, or best practices
+
+### Workflow
+
+**Purpose**: Step-by-step guides for the AI agent to perform specific tasks
+
+**Examples**: Implementation workflows, task-specific guidance, process documentation
+
+**When to use**: For rules that describe how to accomplish specific tasks or follow processes
+
+## Directory Structure
+
+Rule files should always be placed in the appropriate subfolder within `PROJECT_ROOT/.cursor/rules/`:
+
+```
+.cursor/rules/
+├── master.mdc # Central reference (special file)
+├── agents/ # Rules for AI agent behavior and management.
+│   ├── commit-summary.mdc # Add a "Commit Message" section in agent response
+│   ├── cursor-rules.mdc # Rule for managing cursor rules
+│   └── rule-usage.mdc # Add a "Rules Applied" section in agent response
+├── guidelines/ # Opinionated best practices
+│   ├── commit-message.mdc
+│   ├── naming.mdc
+│   └── ...
+└── workflows/ # Step-by-step guides for AI tasks
+    ├── generate-changeset.mdc
+    └── ...
+```
+
+## Naming Convention
+
+Follow the naming convention:
+
+- **Use kebab-case** for filenames (e.g., `react-component.mdc`, `commit-message.mdc`)
+- **Always use .mdc extension** (not .md or .markdown)
+- **Make names descriptive** of the rule's purpose
+- **Place in appropriate category subfolder** (see categories above)
+
+### Examples
+
+✅ **Good names:**
+- `react-component.mdc`
+- `commit-message.mdc`
+- `storybook-story.mdc`
+- `typescript.mdc`
+
+❌ **Bad names:**
+- `ReactComponent.mdc` (PascalCase)
+- `react_component.mdc` (snake_case)
+- `react-component.md` (wrong extension)
+- `component.mdc` (too generic)
+
+## Rule File Structure
+
+### Frontmatter Requirements
+
+Every cursor rule file must begin with frontmatter that defines the rule's metadata:
+
+```yaml
+---
+description: Short description of the rule's purpose
+globs:
+alwaysApply: false
+---
+```
+
+**Frontmatter fields:**
+
+- `description`: Optional brief explanation of what the rule does
+- `globs`: Optional file patterns where this rule applies (e.g., `src/**/*.tsx`)
+  - **Important**: Complex glob patterns are not supported
+  - **Example**: `*.{ts,tsx}` does not work - use `*.ts,*.tsx` instead
+  - **Supported**: Simple patterns like `*.ts`, `src/**/*.tsx`, `packages/*/src/**/*.ts`
+  - **Not Supported**: Brace expansion patterns like `*.{ts,tsx}`, `*.{js,jsx,ts,tsx}`
+- `alwaysApply`: Whether the rule should always be applied (usually `false`)
+
+### Content Structure
+
+The cursor rules should follow this structure:
+
+```md
+# Rule Title
+
+Brief introduction explaining the rule's purpose and when to apply it.
+
+## Table of Contents
+- @Section 1
+- @Section 2
+- @Examples
+- @Integration
+
+## Section 1
+
+Detailed explanation with step-by-step instructions.
+
+### Subsection
+
+More specific guidance with examples.
+
+## Section 2
+
+Additional content organized in logical sections.
+
+## Examples
+
+### Good Examples
+[Include positive examples]
+
+### Bad Examples
+[Include examples of what to avoid]
+
+## Integration with Other Rules
+
+This rule works in conjunction with:
+- @Related Rule 1 - Brief explanation
+- @Related Rule 2 - Brief explanation
+```
+
+### Required Sections
+
+Every rule should include these sections:
+
+1. **Introduction**: Brief explanation of the rule's purpose and when to use it
+2. **Table of Contents**: For rules with multiple sections (use anchor links)
+3. **Main Content**: Organized in logical sections with clear headings
+4. **Examples**: Both good and bad examples when applicable
+5. **Integration**: References to related rules and guidelines
+
+## Creating New Rules
+
+Follow this step-by-step process when adding a new rule:
+
+### Step 1: Determine the Category
+
+Choose the [appropriate category](#rules-categories) based on the rule's purpose.
+
+### Step 2: Create the File
+
+1. Navigate to the appropriate subfolder in `.cursor/rules/`
+2. Create a new file with a descriptive name in kebab-case
+3. Use the `.mdc` extension
+
+### Step 3: Write the Content
+
+Follow the content structure template above, including:
+- Clear title and introduction
+- Table of contents (if multiple sections)
+- Detailed explanations with examples
+- Integration section with related rules
+
+### Step 4: Update References
+
+Update `.cursor/rules/master.mdc` with the new rule.
+
+### Step 5: Test the Rule
+
+Ensure the rule works as expected and follows project conventions.
+
+## Integration with Other Rules
+
+This rule works in conjunction with:
+- **@Master Reference**: Central reference for all rules
+- **@Naming Guidelines**: File naming conventions

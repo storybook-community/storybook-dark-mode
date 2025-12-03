@@ -1,0 +1,160 @@
+---
+description: TypeScript development guidelines
+globs: *.ts,*.tsx
+alwaysApply: false
+---
+
+# TypeScript Guidelines
+
+This document outlines the standards and best practices for writing TypeScript code in this repository.
+
+## Type Safety
+
+### Use Explicit Types
+
+- **Prefer explicit types** over `any` or implicit `any`
+- **Use type annotations** for function parameters and return types
+- **Avoid `any`** - use `unknown` if the type is truly unknown
+
+```ts
+// ✅ Good
+function getTheme(): 'dark' | 'light' {
+	return 'dark'
+}
+
+// ❌ Bad
+function getTheme(): any {
+	return 'dark'
+}
+```
+
+### Type Inference
+
+- **Let TypeScript infer** simple types when obvious
+- **Use explicit types** for public APIs and complex types
+- **Use `satisfies`** for type checking without widening
+
+```ts
+// ✅ Good - TypeScript infers the type
+const theme = 'dark'
+
+// ✅ Good - Explicit for public API
+export function getTheme(): Mode {
+	return 'dark'
+}
+
+// ✅ Good - satisfies for type checking
+const config = {
+	theme: 'dark',
+} satisfies Config
+```
+
+## Interfaces vs Types
+
+### Use Interfaces for Objects
+
+- **Prefer `interface`** for object shapes that may be extended
+- **Use `type`** for unions, intersections, and computed types
+
+```ts
+// ✅ Good - Interface for object shape
+interface DarkModeParam {
+	current?: Mode
+	dark?: ThemeVars
+	light?: ThemeVars
+}
+
+// ✅ Good - Type for union
+type Mode = 'dark' | 'light'
+
+// ✅ Good - Type for computed
+type ThemeKeys = keyof ThemeVars
+```
+
+## Import and Export
+
+### Use Type-Only Imports
+
+- **Use `import type`** for type-only imports
+- **Separate type imports** from value imports when possible
+
+```ts
+// ✅ Good
+import type { Meta, StoryObj } from '@storybook/react'
+import { useState } from 'react'
+
+// ✅ Good - Combined when from same module
+import type { ThemeVars } from 'storybook/theming'
+import { themes } from 'storybook/theming'
+```
+
+### Export Patterns
+
+- **Use named exports** for utilities and types
+- **Use default exports** sparingly (mainly for addons/components)
+- **Export types** with `export type` when possible
+
+```ts
+// ✅ Good
+export function useDarkMode(): boolean {
+	// ...
+}
+
+export type { DarkModeParam }
+
+// ✅ Good - Default for addon
+export default () => definePreviewAddon(addonAnnotations)
+```
+
+## Naming Conventions
+
+See [Naming Guidelines](.cursor/rules/guidelines/naming.mdc) for detailed naming conventions.
+
+## Code Organization
+
+### File Structure
+
+- **One primary export per file** when possible
+- **Group related exports** together
+- **Place types near their usage** or in dedicated type files
+
+### Function Organization
+
+- **Keep functions focused** on a single responsibility
+- **Use descriptive names** that indicate purpose
+- **Document complex logic** with comments
+
+## Error Handling
+
+### Use Type Guards
+
+- **Create type guards** for runtime type checking
+- **Use discriminated unions** for state management
+
+```ts
+// ✅ Good
+function isDarkMode(value: unknown): value is 'dark' {
+	return value === 'dark'
+}
+
+// ✅ Good - Discriminated union
+type State =
+	| { status: 'loading' }
+	| { status: 'success'; data: Theme }
+	| { status: 'error'; error: Error }
+```
+
+## Best Practices
+
+1. **Enable strict mode** in `tsconfig.json`
+2. **Use `const` assertions** for literal types
+3. **Prefer `readonly`** for immutable data structures
+4. **Use utility types** (`Partial`, `Pick`, `Omit`) when appropriate
+5. **Avoid type assertions** (`as`) - use type guards instead
+6. **Document complex types** with JSDoc comments
+
+## Integration with Other Rules
+
+This rule works in conjunction with:
+- [Naming Conventions](.cursor/rules/guidelines/naming.mdc) - Type and interface naming
+- [Storybook Stories](.cursor/rules/guidelines/storybook-stories.mdc) - TypeScript in stories
