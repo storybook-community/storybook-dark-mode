@@ -8,7 +8,7 @@ alwaysApply: false
 
 ## Type Safety
 
-### Explicit Types
+- Prefer implicit typing over explicit types
 - Prefer explicit types over `any` or implicit `any`
 - Use type annotations for function parameters and return types
 - Avoid `any` - use `unknown` if type is truly unknown
@@ -26,6 +26,7 @@ function getTheme(): any {
 ```
 
 ### Type Inference
+
 - Let TypeScript infer simple types when obvious
 - Use explicit types for public APIs and complex types
 - Use `satisfies` for type checking without widening
@@ -50,15 +51,17 @@ type ThemeKeys = keyof ThemeVars // ✅ Computed
 ## Import and Export
 
 ### Type-Only Imports
+
 - Use `import type` for type-only imports
 - Separate type imports from value imports when possible
 
 ```ts
-import type { Meta, StoryObj } from '@storybook/react'
+import type { FC, PropsWithChildren } from 'react'
 import { useState } from 'react'
 ```
 
 ### Export Patterns
+
 - Named exports for utilities and types
 - Default exports sparingly (mainly addons/components)
 - Export types with `export type` when possible
@@ -104,5 +107,6 @@ type State =
 
 ## Integration
 
+- [Master Reference](.cursor/rules/master.mdc) - Central index of all rules
 - [Naming Conventions](.cursor/rules/guidelines/naming.mdc)
 - [Storybook Stories](.cursor/rules/guidelines/storybook-stories.mdc)

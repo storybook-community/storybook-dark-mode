@@ -6,62 +6,14 @@ alwaysApply: false
 
 # Naming Conventions
 
-## Files
+Use **snake_case**:
 
-- **kebab-case**: `dark-mode-toggle.tsx`, `use-dark-mode.ts`
-- Descriptive names indicating purpose
-- Match primary export when possible
-
-## Folders
-
-- **kebab-case**: `dark-mode-toggle/`, `preview/`
-- Singular for component folders: `component/` not `components/`
-- Plural for utility collections: `utils/`, `hooks/`
-
-## TypeScript/JavaScript
-
-### Variables and Functions
-- **camelCase**: `darkMode`, `getCurrentTheme`
-- Descriptive: `isDarkMode` not `isDark`
-- Verb-noun for functions: `getTheme()`, `setDarkMode()`
-
-### Types and Interfaces
-- **PascalCase**: `DarkModeParam`, `ThemeVars`
-- Descriptive type names: `DarkModeStore` not `Store`
-
-### Constants
-- **UPPER_SNAKE_CASE**: `DEFAULT_THEME`, `STORAGE_KEY`
-- **camelCase** for exported object constants: `darkModeConfig`
-
-### Components
-- **PascalCase**: `DarkModeToggle`, `ThemeProvider`
-- Match file name when primary export
-
-## Examples
-
-✅ **Good:**
-- Files: `use-dark-mode.tsx`, `dark-mode-toggle.tsx`
-- Variables: `isDarkMode`, `getTheme()`
-- Types: `DarkModeParam`, `ThemeVars`
-- Components: `DarkModeToggle()`
-
-❌ **Bad:**
-- Files: `useDarkMode.tsx`, `dark_mode_toggle.tsx`
-- Variables: `is_dark_mode`, `GetTheme()`
-- Types: `darkModeParam`, `theme_vars`
-- Components: `darkModeToggle()`
-
-## Storybook
-
-- Files: `.stories.tsx` extension, placed next to component
-- Story names: **PascalCase** (`BasicUsage`, `WithCustomTheme`), descriptive, default is `BasicUsage`
-
-## Package
-
-- Package names: kebab-case with scope: `@storybook-community/storybook-dark-mode`
-- Exports: **camelCase** named exports (`useDarkMode`), descriptive, match file names when single primary export
+- Files: `dark_mode_toggle.tsx`, `use_dark_mode.ts`
+- Folders: `components/`, `hooks/`
+- Stories: `dark_mode_toggle_component.stories.tsx`, `use_dark_mode_hook.stories.tsx`
 
 ## Integration
 
+- [Master Reference](.cursor/rules/master.mdc) - Central index of all rules
 - [TypeScript Guidelines](.cursor/rules/guidelines/typescript.mdc)
 - [Storybook Stories](.cursor/rules/guidelines/storybook-stories.mdc)
