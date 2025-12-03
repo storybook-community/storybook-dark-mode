@@ -8,6 +8,8 @@ alwaysApply: false
 
 Create changeset files in `.changeset/` to document user-facing changes for CHANGELOG generation.
 
+Generate changeset files directly. Do not use the `changeset` command.
+
 ## When to Apply
 
 - Changes affecting public API
@@ -92,21 +94,14 @@ Refactor internal component structure
 2. Write content: appropriate change type, consumer-focused description, migration steps for breaking changes
 3. Review: targets consumers, correct change type, all affected packages listed
 
-## Package-Specific
-
-**Storybook Dark Mode**: Focus on API changes (exports, types, parameters), new config options, theme handling changes, breaking changes with migration, new hooks/utilities.
-
-## Release Process
-
-```bash
-pnpm cs        # Add changeset (interactive)
-pnpm version   # Generate changelog
-pnpm release   # Publish packages
-```
-
 ## Best Practices
 
 - **Descriptive names**: Clear, include component/feature name, kebab-case
 - **Single responsibility**: One logical change per changeset
 - **Consumer focus**: Think about user impact, provide migration steps
 - **Consistency**: Consistent terminology and format
+
+## Integration
+
+- [Master Reference](.cursor/rules/master.mdc) - Central index of all rules
+- [Commit Message Guidelines](.cursor/rules/guidelines/commit-message.mdc)
