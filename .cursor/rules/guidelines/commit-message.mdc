@@ -6,11 +6,7 @@ alwaysApply: false
 
 # Commit Message Guidelines
 
-This document outlines the standards for writing commit messages in this repository.
-
-## Format
-
-We follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
+Follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 ```
 <type>(<scope>): <subject>
@@ -22,98 +18,65 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/) speci
 
 ## Type
 
-The type must be one of the following:
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation only
+- `style`: Formatting, whitespace
+- `refactor`: Code change (not bug fix or feature)
+- `perf`: Performance improvement
+- `test`: Tests
+- `build`: Build system or dependencies
+- `ci`: CI configuration
+- `chore`: Other changes (not src/test)
+- `revert`: Revert previous commit
 
-- `feat`: A new feature
-- `fix`: A bug fix
-- `docs`: Documentation only changes
-- `style`: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-- `refactor`: A code change that neither fixes a bug nor adds a feature
-- `perf`: A code change that improves performance
-- `test`: Adding missing tests or correcting existing tests
-- `build`: Changes that affect the build system or external dependencies
-- `ci`: Changes to CI configuration files and scripts
-- `chore`: Other changes that don't modify src or test files
-- `revert`: Reverts a previous commit
+## Scope (optional)
 
-## Scope
-
-The scope is optional and should be the package name or area affected:
-
-- `storybook-dark-mode`: Changes to the main package
-- `deps`: Dependency updates
-- `config`: Configuration changes
+Package name or area: `storybook-dark-mode`, `deps`, `config`
 
 ## Subject
 
-The subject should:
-- Use the imperative, present tense: "change" not "changed" nor "changes"
-- Not capitalize the first letter
-- No dot (.) at the end
-- Be concise but descriptive
+- Imperative present tense: "change" not "changed"
+- Lowercase first letter
+- No trailing dot
+- Concise and descriptive
 
-## Body
+## Body (optional)
 
-The body is optional and should:
-- Provide additional context about the change
-- Explain the "why" not the "what"
-- Be separated from the subject by a blank line
+- Additional context
+- Explain "why" not "what"
+- Separated by blank line
 
-## Footer
+## Footer (optional)
 
-The footer is optional and should:
 - Reference issues: `Closes #123`, `Fixes #456`
-- Note breaking changes: `BREAKING CHANGE: description`
+- Breaking changes: `BREAKING CHANGE: description`
 
 ## Examples
 
-### Simple Feature
-
 ```
 feat: add dark mode toggle component
-```
-
-### Feature with Scope
-
-```
 feat(storybook-dark-mode): add theme persistence to localStorage
-```
-
-### Bug Fix
-
-```
 fix: correct dark mode class application on iframe
-```
-
-### Breaking Change
-
-```
 feat!: remove DarkModeStore from public exports
 
 BREAKING CHANGE: DarkModeStore is now internal. Use DarkModeParam type instead.
-```
 
-### Multi-line Commit
-
-```
 feat: add support for custom theme classes
 
 Allow users to specify custom class names for dark and light modes.
-This enables better integration with existing CSS frameworks.
 
 Closes #123
 ```
 
 ## Best Practices
 
-1. Keep the subject line under 72 characters
-2. Use the body to explain what and why vs. how
-3. Reference issues and pull requests when applicable
-4. Use imperative mood in the subject line
-5. Be consistent with scope usage
+1. Subject line under 72 characters
+2. Body explains what/why, not how
+3. Reference issues when applicable
+4. Use imperative mood
+5. Be consistent with scope
 
-## Integration with Other Rules
+## Integration
 
-This rule works in conjunction with:
-- [Commit Summary](.cursor/rules/agents/commit-summary.mdc) - When to include commit messages
-- [Generate Changeset](.cursor/rules/workflows/generate-changeset.mdc) - For documenting user-facing changes
+- [Generate Changeset](.cursor/rules/workflows/generate-changeset.mdc)

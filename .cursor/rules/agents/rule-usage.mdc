@@ -6,31 +6,26 @@ alwaysApply: false
 
 # Rule Usage
 
-This rule ensures that AI agents document which cursor rules were applied during their work.
+Document which cursor rules were applied during work.
 
 ## When to Apply
 
-This rule should be applied when:
-- Completing a task that involved following specific rules
-- Making code changes that required rule guidance
-- Creating or modifying files that are covered by rules
+- Completing tasks that followed specific rules
+- Making code changes requiring rule guidance
 
 ## Implementation
 
-After completing a task, the AI agent should:
-
-1. Review which rules were relevant to the work performed
-2. List the rules that were actively applied
-3. Add a "Rules Applied" section to the response
+After completing a task:
+1. Review relevant rules
+2. List actively applied rules
+3. Add "Rules Applied" section
 
 ## Format
-
-The rules applied section should be formatted as:
 
 ```markdown
 ## Rules Applied
 
-- [Rule Name](.cursor/rules/category/rule-name.mdc) - Brief description of how it was used
+- [Rule Name](.cursor/rules/category/rule-name.mdc) - How it was used
 - [Another Rule](.cursor/rules/category/another-rule.mdc) - Brief description
 ```
 
@@ -39,13 +34,11 @@ The rules applied section should be formatted as:
 ```markdown
 ## Rules Applied
 
-- [TypeScript Guidelines](.cursor/rules/guidelines/typescript.mdc) - Used for type safety and code structure
-- [Naming Conventions](.cursor/rules/guidelines/naming.mdc) - Followed kebab-case for file naming
-- [Commit Message](.cursor/rules/guidelines/commit-message.mdc) - Generated conventional commit message
+- [TypeScript Guidelines](.cursor/rules/guidelines/typescript.mdc) - Type safety and code structure
+- [Naming Conventions](.cursor/rules/guidelines/naming.mdc) - kebab-case file naming
+- [Commit Message](.cursor/rules/guidelines/commit-message.mdc) - Conventional commit format
 ```
 
-## Integration with Other Rules
+## Integration
 
-This rule works in conjunction with:
-- [Commit Summary](.cursor/rules/agents/commit-summary.mdc) - Documenting changes made
-- All guideline and workflow rules - Documenting which ones were followed
+- All guideline and workflow rules
