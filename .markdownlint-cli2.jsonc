@@ -1,5 +1,5 @@
 {
-	"ignores": [".changeset/*.md", "slides/*.md", "**/CHANGELOG.md", "**/LICENSE"],
+	"ignores": [".changeset/*.md", ".cursor/**/*.mdc", "slides/*.md", "**/CHANGELOG.md", "**/LICENSE"],
 	"config": {
 		"hard_tab": false
 	}
