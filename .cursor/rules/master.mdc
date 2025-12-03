@@ -6,51 +6,26 @@ alwaysApply: true
 
 # AI Rules Master Reference
 
-This file serves as the central reference for all AI rules in the repository.
-
-## Table of Contents
-
-- [How to Use](#how-to-use)
-- [Locations](#locations)
-- [Rule List](#rule-list)
-
-## How to Use
-
-Each rule may contain a section about related rules. You should read the related rules before applying the rule.
+Central reference for all AI rules. Read related rules before applying.
 
 ## Locations
 
-All rules should be located under folders `.cursor/rules`. They can be placed at the root of the repository (i.e. `<REPOSITORY_ROOT>/.cursor/rules`), or under the root of a project in a monorepo (e.g. `<REPOSITORY_ROOT>/.../<PROJECT_ROOT>/.cursor/rules`).
-
-Other `*.mdc` files should not be treated as rule files unless explicitly referenced.
+Rules are in `.cursor/rules/` at repository root or project root in monorepos. Other `*.mdc` files are not rules unless referenced.
 
 ## Rule List
 
-Rules are organized into three main categories:
-
-- **Agents**: Control AI agent behavior and response formatting
-- **Guidelines**: Establish best practices and coding standards
-- **Workflows**: Provide step-by-step processes for specific tasks
-
 ### Agents
 
-Rules for AI agent behavior and management:
-
-- [Commit Summary](.cursor/rules/agents/commit-summary.mdc) - Add a "Commit Message" section in agent response
-- [Cursor Rules](.cursor/rules/agents/cursor-rules.mdc) - Rule for managing cursor rules
-- [Rule Usage](.cursor/rules/agents/rule-usage.mdc) - Add a "Rules Applied" section in agent response
+- [Cursor Rules](.cursor/rules/agents/cursor-rules.mdc) - Managing cursor rules
+- [Rule Usage](.cursor/rules/agents/rule-usage.mdc) - Add "Rules Applied" section
 
 ### Guidelines
 
-Opinionated best practices:
-
-- [Commit Message](.cursor/rules/guidelines/commit-message.mdc) - Generate commit messages
-- [Naming](.cursor/rules/guidelines/naming.mdc) - File and folder naming conventions
-- [Storybook Stories](.cursor/rules/guidelines/storybook-stories.mdc) - How to write Storybook stories
-- [TypeScript](.cursor/rules/guidelines/typescript.mdc) - TypeScript development guidelines
+- [Commit Message](.cursor/rules/guidelines/commit-message.mdc) - Commit message format
+- [Naming](.cursor/rules/guidelines/naming.mdc) - Naming conventions
+- [Storybook Stories](.cursor/rules/guidelines/storybook-stories.mdc) - Storybook story format
+- [TypeScript](.cursor/rules/guidelines/typescript.mdc) - TypeScript standards
 
 ### Workflows
 
-Step-by-step guides for AI tasks:
-
-- [Generate Changeset](.cursor/rules/workflows/generate-changeset.mdc) - Generate changeset files for package versioning and changelog generation
+- [Generate Changeset](.cursor/rules/workflows/generate-changeset.mdc) - Changeset generation
