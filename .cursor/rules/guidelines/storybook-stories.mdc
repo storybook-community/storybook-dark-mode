@@ -6,49 +6,38 @@ alwaysApply: false
 
 # Writing Storybook Stories
 
-Use Component Story Format (CSF).
+Use CSF Next format.
 
 ## Basic Structure
 
 ```tsx
-import type { Meta, StoryObj } from '@storybook/react'
+import preview from '../.storybook/preview.js'
 
-const meta: Meta<typeof YourComponent> = {
+const meta = preview.meta({
 	title: 'components/YourComponent',
 	tags: ['autodocs'],
 	component: YourComponent,
-} satisfies Meta
+})
 
 export default meta
-type Story = StoryObj<typeof meta>
 
-export const BasicUsage: Story = { }
+export const Primary = meta.story({ })
+
+export const PrimaryDisabled = Primary.extend({ })
+
+PrimaryDisabled.test('should be disabled', () => { })
 ```
 
 ## Story Organization
 
-1. **Files**: Place next to component, use `.stories.tsx`, name `component-name.stories.tsx`
-2. **Naming**: Default story is `BasicUsage`, others descriptive (`WithError`, `Loading`). Use `name` property if PascalCase is confusing:
-```ts
-export const Red100: Story = { name: 'red-100' }
-```
-3. **Description**: Use `defineDocsParam` for additional story description:
-```ts
-import { defineDocsParam } from '@repobuddy/storybook'
-export const SomeStory: Story = {
-	parameters: defineDocsParam({
-		description: { story: 'Additional message' },
-	}),
-}
-```
+1. **Files**: Place next to component, name `your_component.stories.tsx`, `your_component.some_prop.stories.tsx`.
+2. **Naming**: Default story is `Specification`, others descriptive (`WithError`, `Loading`). Use `name` property if PascalCase is confusing.
 
 ## Story Implementation Patterns
 
 1. **Property order**: `name`, `tags`, `parameters`, `args`, `loaders`, `decorators`, `render`, `play`, `afterEach`
-
-2. **Render function**: Use to emphasize testing subject. Extract complex UI into components:
+2. **Render function**: Emphasize testing subject. Extract complex UI into components:
 ```tsx
-// ✅ Good - Extract LogPanel component
 export const OnChange: Story = {
 	render() {
 		const [logs, setLogs] = useState<string[]>([])
@@ -62,7 +51,6 @@ export const OnChange: Story = {
 		)
 	},
 }
-// ❌ Bad - Inline styles create noise, extract to component
 ```
 
 3. Prefer CSS classes or Tailwind CSS over inline styles.
@@ -72,33 +60,31 @@ export const OnChange: Story = {
 - Stories serve as visual tests and documentation
 - Include edge cases and error states
 - Document component props and usage
-- Use `defineDocsParam` for additional documentation
 - Use `play` function to interact and validate behavior
 
 ## Example
 
 ```tsx
-import type { Meta, StoryObj } from '@storybook/react'
-import { CopyButton } from './copy-button.tsx'
+// copy_button.is_disabled.stories.tsx
+import preview from '../.storybook/preview.js'
+import { CopyButton } from './copy_button.tsx'
 
-const meta = {
+const meta = preview.meta({
 	title: 'components/CopyButton/isDisabled',
 	component: CopyButton,
 	tags: ['autodocs'],
-} satisfies Meta<typeof CopyButton>
+})
 
 export default meta
-type Story = StoryObj<typeof meta>
 
-export const Enabled: Story = {
-	name: 'isDisabled: false',
+export const Specification = meta.story({
 	args: { label: 'Copy Button', isDisabled: false },
-}
+})
 
-export const Disabled: Story = {
-	name: 'isDisabled: true',
+export const WhenDisabled = Specification.extend({
+	name: 'true',
 	args: { label: 'Copy Button', isDisabled: true },
-}
+})
 ```
 
 ## Best Practices
@@ -111,9 +97,13 @@ export const Disabled: Story = {
 ## Checklist
 
 - [ ] `.stories.tsx` extension, placed next to component
-- [ ] CSF format with TypeScript
-- [ ] Proper imports (React hooks if used)
-- [ ] Default story named `BasicUsage`
+- [ ] CSF Next format with TypeScript
+- [ ] Default story named `Specification`
 - [ ] Properties follow recommended order
 - [ ] Complete, runnable code examples
-- [ ] Documentation with `defineDocsParam` when needed
+
+## Integration
+
+- [Master Reference](.cursor/rules/master.mdc) - Central index of all rules
+- [Naming Conventions](.cursor/rules/guidelines/naming.mdc)
+- [TypeScript Guidelines](.cursor/rules/guidelines/typescript.mdc)
