@@ -2,10 +2,10 @@ import { MoonIcon, SunIcon } from '@storybook/icons'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { IconButton } from 'storybook/internal/components'
 import { type API, addons, useParameter } from 'storybook/manager-api'
-import { DARK_MODE_EVENT_NAME, UPDATE_DARK_MODE_EVENT_NAME } from '../constants'
 import { mergeThemeWithBrandConfig } from '../internal/utils/merge_theme_with_brand_config'
 import { prefersDark, store, updateManager, updatePreview, updateStore } from '../internal/utils/store'
-import type { DarkModeStore, Mode } from '../types'
+import { DARK_MODE_EVENT_NAME, UPDATE_DARK_MODE_EVENT_NAME } from '../shared/constants'
+import type { DarkModeStore, Mode } from '../shared/types'
 
 interface DarkModeProps {
 	/** The storybook API */

@@ -1,11 +1,11 @@
 import { definePreviewAddon } from 'storybook/internal/csf'
 import addonAnnotations from './preview'
 
-export * from './constants'
 export { useDarkMode } from './hooks/use_dark_mode'
 export { defineDarkModeParam } from './preview/parameters/define_dark_mode_param'
 export type { DarkModeParam } from './preview/parameters/define_dark_mode_param'
-export type * from './types'
+export * from './shared/constants'
+export type * from './shared/types'
 
-// Storybook 10 preview addon
+// CSF Next preview addon
 export default () => definePreviewAddon(addonAnnotations)

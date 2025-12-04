@@ -1,7 +1,7 @@
 import { DocsContainer, type DocsContainerProps } from '@storybook/addon-docs/blocks'
 import React, { useEffect, useState, type PropsWithChildren } from 'react'
-import { DARK_MODE_EVENT_NAME } from '../constants'
 import { store } from '../internal/utils/store'
+import { DARK_MODE_EVENT_NAME } from '../shared/constants'
 
 export function DarkModeDocsContainer(props: PropsWithChildren<DocsContainerProps>) {
 	const s = store()

@@ -1,7 +1,7 @@
 import { dequal as equal } from 'dequal'
 import type { ThemeVars } from 'storybook/theming'
 import { themes } from 'storybook/theming'
-import type { Mode } from '../../types'
+import type { Mode } from '../../shared/types'
 
 export interface DarkModeStore {
 	/** The class target in the preview iframe */
