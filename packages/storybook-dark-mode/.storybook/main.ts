@@ -9,6 +9,7 @@ export default {
 		import.meta.resolve('./local-preset.ts')
 	],
 	framework: '@storybook/react-vite',
+	staticDirs: [{ from: '../assets', to: '/assets' }],
 	tags: {
 		unit: {
 			excludeFromSidebar: process.env.NODE_ENV === 'production'
