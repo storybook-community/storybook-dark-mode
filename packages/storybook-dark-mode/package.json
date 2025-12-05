@@ -43,10 +43,9 @@
 		"./package.json": "./package.json"
 	},
 	"files": [
-		"dist/**/*",
-		"README.md",
-		"*.js",
-		"*.d.ts"
+		"dist",
+		"readme.md",
+		"*.js"
 	],
 	"scripts": {
 		"build": "tsdown",
