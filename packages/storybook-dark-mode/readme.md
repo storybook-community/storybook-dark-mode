@@ -3,10 +3,10 @@
 [![NPM version][npm_image]](https://npmjs.org/package/@storybook-community/storybook-dark-mode)
 [![NPM downloads][downloads_image]](https://npmjs.org/package/@storybook-community/storybook-dark-mode)
 
-A storybook addon that lets your users toggle between dark and light mode.
+A Storybook addon that lets your users toggle between dark and light mode.
 
 > [!NOTE]
-> This is a fork of [storybook-dark-mode](https://github.com/hipstersmoothie/storybook-dark-mode) by [@hipstersmoothie](https://github.com/hipstersmoothie) to support Storybook 9 and newer.
+> This is a fork of [storybook-dark-mode](https://github.com/hipstersmoothie/storybook-dark-mode) by [@hipstersmoothie](https://github.com/hipstersmoothie) supporting Storybook 9 and newer.
 
 ![Example](./assets/example.gif)
 
@@ -22,7 +22,7 @@ pnpm add -D @storybook-community/storybook-dark-mode
 
 ## Configuration
 
-Add following content to `.storybook/main.ts`
+Add the following content to `.storybook/main.ts`
 
 ```ts
 // .storybook/main.ts
@@ -54,8 +54,9 @@ export const parameters = {
 ```ts
 // .storybook/preview.ts
 import { definePreview } from '@storybook/your-framework'
-import addonDarkMode from '@storybook-community/storybook-dark-mode'
 import addonDocs from '@storybook/addon-docs'
+import addonDarkMode from '@storybook-community/storybook-dark-mode'
+import { themes } from 'storybook/theming'
 
 export default definePreview({
   // Load addon annotations
@@ -75,12 +76,12 @@ export default definePreview({
 
 Order of precedence for the initial color scheme:
 
-1. If the user has previously set a color theme it's used
+1. If the user has previously set a color theme, it's used
 2. The value you have configured for `current` parameter in your storybook
 3. The OS color scheme preference
 
 Once the initial color scheme has been set, subsequent reloads will use this value.
-To clear the cached color scheme you have to `localStorage.clear()` in the chrome console.
+To clear the cached color scheme, you need to run `localStorage.clear()` in the browser console.
 
 ```ts
 // .storybook/preview.ts
@@ -95,7 +96,7 @@ export const parameters = {
 ### Dark/Light Class
 
 This plugin will apply a dark and light class name to the manager.
-This allows you to easily write dark mode aware theme overrides for the storybook UI.
+This allows you to easily write dark-mode-aware theme overrides for the Storybook UI.
 
 You can override the classNames applied when switching between light and dark mode using the `darkClass` and `lightClass` parameters.
 
@@ -119,12 +120,12 @@ export const parameters = {
 };
 ```
 
-### Preview class target
+### Preview Class Target
 
 This plugin will apply the dark/light class to the `<body>` element of the preview iframe. This can be configured with the `classTarget` parameter.
 The value will be passed to a `querySelector()` inside the iframe.
 
-This is useful if the `<body>` is styled according to a parent's class, in that case it can be set to `html`.
+This is useful if the `<body>` is styled according to a parent element's class; in that case, it can be set to `html`.
 
 ```js
 export const parameters = {
@@ -136,7 +137,7 @@ export const parameters = {
 
 ### Preview `ClassName`
 
-This plugin will apply the `darkClass` and `lightClass` classes to the preview iframe if you turn on the `stylePreview` option.
+This plugin will apply the `darkClass` and `lightClass` classes to the preview iframe if you enable the `stylePreview` option.
 
 ```js
 export const parameters = {
@@ -150,6 +151,8 @@ export const parameters = {
 
 ```js
 // .storybook/preview.ts
+import { DarkModeDocsContainer } from '@storybook-community/storybook-dark-mode/docs'
+
 export const parameters = {
   docs: {
     container: DarkModeDocsContainer
@@ -163,7 +166,6 @@ If your components use a custom Theme provider, you can integrate it by using th
 
 ```js
 import { useDarkMode } from '@storybook-community/storybook-dark-mode'
-import { addDecorator } from 'storybook/react-vite'
 
 // your theme provider
 import ThemeContext from './theme'
@@ -178,7 +180,7 @@ function ThemeWrapper(props) {
   );
 }
 
-export const decorators = [renderStory => <ThemeWrapper>{renderStory()}</ThemeWrapper>)];
+export const decorators = [renderStory => <ThemeWrapper>{renderStory()}</ThemeWrapper>];
 ```
 
 #### Theme Knobs
@@ -186,18 +188,20 @@ export const decorators = [renderStory => <ThemeWrapper>{renderStory()}</ThemeWr
 If you want to have your UI's dark mode separate from your components' dark mode, implement this global decorator:
 
 ```js
+import { select } from '@storybook/addon-controls'
 import { createElement } from 'react'
 import { themes } from 'storybook/theming'
+import ThemeProvider from './ThemeProvider'
 
 // Add a global decorator that will render a dark background when the
-// "Color Scheme" knob is set to dark
+// "Color Scheme" control is set to dark
 const knobDecorator = storyFn => {
-  // A knob for color scheme added to every story
+  // A control for color scheme added to every story
   const colorScheme = select('Color Scheme', ['light', 'dark'], 'light')
 
-  // Hook your theme provider with some knobs
+  // Hook your theme provider with some controls
   return createElement(ThemeProvider, {
-    // A knob for theme added to every story
+    // A control for theme added to every story
     theme: select('Theme', Object.keys(themes), 'default'),
     colorScheme,
     children: [
@@ -221,8 +225,8 @@ export const decorators = [knobDecorator]
 You can also listen for the `DARK_MODE` event via the addons channel.
 
 ```js
-import { addDecorator } from '@storybook/react-vite'
 import { DARK_MODE_EVENT_NAME } from '@storybook-community/storybook-dark-mode'
+import { useState, useEffect } from 'react'
 import { addons } from 'storybook/preview-api'
 
 // your theme provider
@@ -233,7 +237,7 @@ const channel = addons.getChannel()
 
 // create a component that listens for the DARK_MODE event
 function ThemeWrapper(props) {
-  // this example uses hook but you can also use class component as well
+  // this example uses hooks, but you can also use a class component as well
   const [isDark, setDark] = useState(false)
 
   useEffect(() => {
@@ -250,7 +254,7 @@ function ThemeWrapper(props) {
   )
 }
 
-export const decorators = [renderStory => <ThemeWrapper>{renderStory()}</ThemeWrapper>)]
+export const decorators = [renderStory => <ThemeWrapper>{renderStory()}</ThemeWrapper>]
 ```
 
 [downloads_image]: https://img.shields.io/npm/dm/@storybook-community/storybook-dark-mode.svg?style=flat
