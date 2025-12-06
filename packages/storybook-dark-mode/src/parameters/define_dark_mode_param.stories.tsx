@@ -4,7 +4,7 @@ import React from 'react'
 import { type DarkModeParam, defineDarkModeParam } from './define_dark_mode_param'
 
 const meta = {
-	title: 'preview/parameters/defineDarkModeParam',
+	title: 'API/parameters/defineDarkModeParam',
 	tags: ['autodocs'],
 	parameters: {
 		docs: {

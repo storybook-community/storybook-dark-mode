@@ -3,7 +3,7 @@ import React from 'react'
 import { useDarkMode } from './use_dark_mode'
 
 export default {
-	title: 'hooks/useDarkMode'
+	title: 'API/hooks/useDarkMode'
 } satisfies Meta
 
 export const InRender: StoryObj = {

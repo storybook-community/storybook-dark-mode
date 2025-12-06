@@ -3,9 +3,10 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { IconButton } from 'storybook/internal/components'
 import { type API, addons, useParameter } from 'storybook/manager-api'
 import { mergeThemeWithBrandConfig } from '../internal/utils/merge_theme_with_brand_config'
+import type { DarkModeStore } from '../internal/utils/store'
 import { prefersDark, store, updateManager, updatePreview, updateStore } from '../internal/utils/store'
-import { DARK_MODE_EVENT_NAME, UPDATE_DARK_MODE_EVENT_NAME } from '../shared/constants'
-import type { DarkModeStore, Mode } from '../shared/types'
+import { DARK_MODE_EVENT_NAME, UPDATE_DARK_MODE_EVENT_NAME } from '../static/constants'
+import type { Mode } from '../static/types'
 
 interface DarkModeProps {
 	/** The storybook API */
