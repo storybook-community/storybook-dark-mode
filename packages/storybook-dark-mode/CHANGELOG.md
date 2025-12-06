@@ -1,5 +1,12 @@
 # Changelog
 
+## 7.1.0
+
+### Minor Changes
+
+- [`47e9d3e`](https://github.com/storybook-community/storybook-dark-mode/commit/47e9d3efbd37bdd9f5ce910ecd193c251965fa2d) Thanks [@unional](https://github.com/unional)! - Remove `DarkModeStore` type from main export.
+  It should be internal to begin with.
+
 ## 7.0.3
 
 ### Patch Changes
