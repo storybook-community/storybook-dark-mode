@@ -1,5 +1,5 @@
 import type { ThemeVars } from 'storybook/theming'
-import type { Mode } from '../../shared/types'
+import type { Mode } from '../static/types'
 
 export interface DarkModeParam {
 	/** The class target in the preview iframe */

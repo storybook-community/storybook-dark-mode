@@ -13,7 +13,16 @@ export default definePreview({
 		},
 		options: {
 			storySort: {
-				order: ['Overview', 'changelog', 'preview', 'hooks']
+				order: [
+					'Overview',
+					'Getting Started',
+					'Storybook Setup',
+					['main', 'manager', 'preview', ['addons', 'docs']],
+					'API',
+					['tags', 'decorators', 'parameters', 'hooks', 'events'],
+					'Examples',
+					'changelog'
+				]
 			}
 		},
 		...defineDarkModeParam({

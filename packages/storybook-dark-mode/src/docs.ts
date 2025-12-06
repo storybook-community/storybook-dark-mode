@@ -1,1 +1,1 @@
-export * from './components/dark_mode_docs_container'
+export * from './preview/docs/dark_mode_docs_container'
