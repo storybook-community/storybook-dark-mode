@@ -16,12 +16,12 @@ export default definePreview({
 				order: [
 					'Overview',
 					'Getting Started',
+					'changelog',
+					'Examples',
 					'Storybook Setup',
 					['main', 'manager', 'preview', ['addons', 'docs']],
 					'API',
-					['tags', 'decorators', 'parameters', 'hooks', 'events'],
-					'Examples',
-					'changelog'
+					['tags', 'decorators', 'parameters', 'hooks', 'events']
 				]
 			}
 		},
