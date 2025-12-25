@@ -58,8 +58,8 @@ importers:
         version: 2.0.3
     devDependencies:
       '@repobuddy/storybook':
-        specifier: ^1.0.1
-        version: 1.0.1(storybook-addon-tag-badges@3.0.2(storybook@10.0.7(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2))))
+        specifier: ^2.1.2
+        version: 2.1.2(@storybook/addon-docs@10.0.7(@types/react@19.2.5)(esbuild@0.27.0)(rollup@4.53.2)(storybook@10.0.7(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)))(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(storybook-addon-tag-badges@3.0.2(storybook@10.0.7(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2))))
       '@repobuddy/vitest':
         specifier: ^2.0.0
         version: 2.0.0(@vitest/browser-playwright@4.0.9)(vitest@4.0.9)
@@ -760,8 +760,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@just-web/css@0.5.0':
-    resolution: {integrity: sha512-M5giESPgTPrf/agtSGaBm7gAvMb4KYQUln84BbV9Fxw6dx0q05igsKu1uF65XbPjqIowD0zTm0q05+8xY9jmbQ==}
+  '@just-web/css@0.7.0':
+    resolution: {integrity: sha512-cueAVhavUptLB96wViiDntBZh5i+BdcFG+4yOea6UXyghBzF5wI0/jeufiNHTqf6yACY/4K+GXrN5c5MquzTKw==}
 
   '@manypkg/find-root@1.1.0':
     resolution: {integrity: sha512-mki5uBvhHzO8kYYix/WRy2WX8S3B5wdVSc9D6KcU5lQNglP2yt58/VfLuAK49glRXChosY8ap2oJ1qgma3GUVA==}
@@ -812,15 +812,16 @@ packages:
     peerDependencies:
       '@biomejs/biome': '>= 1.8.0'
 
-  '@repobuddy/storybook@1.0.1':
-    resolution: {integrity: sha512-bfbRTv61J9GS41xLPNlX5J+Pb9Dt3DOZRmiPOWbxUTYKL1dXaYZK4HYcSDtPK7MFge4YQm2KzJ3MgdtrCV+Sgw==}
+  '@repobuddy/storybook@2.1.2':
+    resolution: {integrity: sha512-Juvbdxm1KrYu2PkeGA/TG6d9Lui2/hw1kunJ9KjDvmE8tzTWJTMye9/42wNYHwUWMuAUqzzyrtsR7R4VaM5JHQ==}
     peerDependencies:
-      storybook-addon-tag-badges: ^2.0.0
-      storybook-dark-mode2: ^5.0.2
+      '@storybook-community/storybook-dark-mode': ^7.0.0
+      '@storybook/addon-docs': ^10.0.0
+      storybook-addon-tag-badges: ^3.0.2
     peerDependenciesMeta:
-      storybook-addon-tag-badges:
+      '@storybook-community/storybook-dark-mode':
         optional: true
-      storybook-dark-mode2:
+      storybook-addon-tag-badges:
         optional: true
 
   '@repobuddy/test@1.0.0':
@@ -1820,8 +1821,8 @@ packages:
   html-escaper@2.0.2:
     resolution: {integrity: sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==}
 
-  htmlfy@0.7.5:
-    resolution: {integrity: sha512-woog97QSD0MJVXDs4nNz3S/XIb+wa/UgunpaI29tbXaTB9SlNvQalw1XolE4m3BPp3xkJMx96I27Lb/clesPLA==}
+  htmlfy@1.0.1:
+    resolution: {integrity: sha512-M85PmyEpWUDqhlEknsnvqmqGLq67h8e86WuKLMdXQdUl8iyvOSDbAAyv0tv0IVmIfh7Py1Vsot/IU1skdswt6g==}
 
   human-id@4.1.2:
     resolution: {integrity: sha512-v/J+4Z/1eIJovEBdlV5TYj1IR+ZiohcYGRY+qN/oC9dAfKzVT023N/Bgw37hrKCoVRBvk3bqyzpr2PP5YeTMSg==}
@@ -3506,7 +3507,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@just-web/css@0.5.0':
+  '@just-web/css@0.7.0':
     dependencies:
       csstype: 3.2.2
       type-plus: 8.0.0-beta.7
@@ -3569,13 +3570,18 @@ snapshots:
     dependencies:
       '@biomejs/biome': 2.3.8
 
-  '@repobuddy/storybook@1.0.1(storybook-addon-tag-badges@3.0.2(storybook@10.0.7(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2))))':
+  '@repobuddy/storybook@2.1.2(@storybook/addon-docs@10.0.7(@types/react@19.2.5)(esbuild@0.27.0)(rollup@4.53.2)(storybook@10.0.7(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)))(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(storybook-addon-tag-badges@3.0.2(storybook@10.0.7(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2))))':
     dependencies:
-      '@just-web/css': 0.5.0
+      '@just-web/css': 0.7.0
       '@repobuddy/test': 1.0.0
-      htmlfy: 0.7.5
+      '@storybook/addon-docs': 10.0.7(@types/react@19.2.5)(esbuild@0.27.0)(rollup@4.53.2)(storybook@10.0.7(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)))(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2))
+      '@storybook/icons': 2.0.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      htmlfy: 1.0.1
     optionalDependencies:
       storybook-addon-tag-badges: 3.0.2(storybook@10.0.7(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)))
+    transitivePeerDependencies:
+      - react
+      - react-dom
 
   '@repobuddy/test@1.0.0': {}
 
@@ -4528,7 +4534,7 @@ snapshots:
 
   html-escaper@2.0.2: {}
 
-  htmlfy@0.7.5: {}
+  htmlfy@1.0.1: {}
 
   human-id@4.1.2: {}
 
