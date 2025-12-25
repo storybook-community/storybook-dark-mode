@@ -27,7 +27,11 @@ Add the following content to `.storybook/main.ts`
 ```ts
 // .storybook/main.ts
 export default {
-  addons: ['@storybook-community/storybook-dark-mode']
+  addons: [
+    // '@storybook/addon-docs' is required for the dark mode to work
+    '@storybook/addon-docs',
+    '@storybook-community/storybook-dark-mode'
+  ]
 };
 ```
 
