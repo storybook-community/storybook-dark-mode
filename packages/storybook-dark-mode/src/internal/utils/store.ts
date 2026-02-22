@@ -48,7 +48,10 @@ export const updateStore = (newStore: DarkModeStore) => {
 /** Coerce a string to a single item array, or return an array as-is */
 const arrayify = (classes: string | string[]): string[] => {
 	const arr: string[] = []
-	return arr.concat(classes).map((item) => item)
+	return arr
+		.concat(classes)
+		.map((item) => item)
+		.filter(Boolean)
 }
 
 /** Add the light/dark class to an element */
@@ -56,13 +59,11 @@ export const toggleDarkClass = (
 	el: Element,
 	{ current, darkClass = defaultParams.darkClass, lightClass = defaultParams.lightClass }: DarkModeStore
 ) => {
-	if (current === 'dark') {
-		el.classList.remove(...arrayify(lightClass))
-		el.classList.add(...arrayify(darkClass))
-	} else {
-		el.classList.remove(...arrayify(darkClass))
-		el.classList.add(...arrayify(lightClass))
-	}
+	const lightClasses = arrayify(lightClass)
+	const darkClasses = arrayify(darkClass)
+	const [toRemove, toAdd] = current === 'dark' ? [lightClasses, darkClasses] : [darkClasses, lightClasses]
+	if (toRemove.length) el.classList.remove(...toRemove)
+	if (toAdd.length) el.classList.add(...toAdd)
 }
 
 /** Update the preview iframe class */

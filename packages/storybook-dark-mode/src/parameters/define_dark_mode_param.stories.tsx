@@ -1,11 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
+import { showSource, StoryCard } from '@repobuddy/storybook'
+import type { Meta, StoryObj } from '@repobuddy/storybook/storybook-addon-tag-badges'
 import dedent from 'dedent'
 import React from 'react'
 import { type DarkModeParam, defineDarkModeParam } from './define_dark_mode_param'
 
 const meta = {
 	title: 'API/parameters/defineDarkModeParam',
-	tags: ['autodocs'],
+	tags: ['autodocs', 'func', 'version:next'],
 	parameters: {
 		docs: {
 			description: {
@@ -45,7 +46,8 @@ const meta = {
 		classTarget: 'body',
 		darkClass: 'dark',
 		lightClass: 'light'
-	}
+	},
+	render: () => <></>
 } satisfies Meta<DarkModeParam>
 
 export default meta
@@ -53,48 +55,82 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const SimpleUsage: Story = {
+	tags: ['use-case'],
+	decorators: [
+		showSource({
+			source: dedent`export const YourStory = {
+			parameters: defineDarkModeParam(args)
+		}`
+		})
+	],
 	render: (args) => {
 		const parameters = defineDarkModeParam(args)
 		return (
-			<div className="flex flex-col gap-8">
-				<pre>
-					<code>{dedent`export const YourStory = {
-						parameters: defineDarkModeParam(args)
-					}`}</code>
-				</pre>
-				<div>
-					<code>
-						{'// Result'}
-						<pre>
-							export const YourStory ={' '}
-							{JSON.stringify(
-								{
-									parameters
-								},
-								null,
-								2
-							)}
-						</pre>
-					</code>
-				</div>
-			</div>
+			<StoryCard appearance="output">
+				<code>
+					{'// Result'}
+					<pre>
+						export const YourStory ={' '}
+						{JSON.stringify(
+							{
+								parameters
+							},
+							null,
+							2
+						)}
+					</pre>
+				</code>
+			</StoryCard>
 		)
 	}
 }
 
 export const CombinedUsage: Story = {
-	render: () => {
-		return (
-			<div className="flex flex-col gap-8">
-				<pre>
-					<code>{dedent`export const YourStory = {
-						parameters: {
-							...defineDarkModeParam({...}),
-							...defineLayoutParam({...}),
-						}
-					}`}</code>
-				</pre>
-			</div>
-		)
-	}
+	tags: ['use-case'],
+	decorators: [
+		showSource({
+			source: dedent`export const YourStory = {
+				parameters: {
+					...defineDarkModeParam({...}),
+					...defineLayoutParam({...}),
+				}
+			}`
+		})
+	]
+}
+
+export const DisableDarkMode: Story = {
+	tags: ['use-case'],
+	parameters: defineDarkModeParam({ disable: true, darkClass: '', lightClass: '' }),
+	decorators: [
+		showSource({
+			source: dedent`export const YourStory = {
+				parameters: defineDarkModeParam({ disable: true })
+			}`
+		})
+	]
+}
+
+export const EmptyClassString: Story = {
+	tags: ['unit'],
+	parameters: defineDarkModeParam({ darkClass: '', lightClass: '' }),
+	decorators: [
+		showSource({
+			source: dedent`export const YourStory = {
+				parameters: defineDarkModeParam({ darkClass: '', lightClass: '' })
+			}`
+		})
+	]
+}
+
+export const EmptyClassArray: Story = {
+	tags: ['unit'],
+	parameters: defineDarkModeParam({ darkClass: [], lightClass: [] }),
+	decorators: [
+		showSource({
+			source: dedent`export const YourStory = {
+				parameters: defineDarkModeParam({ darkClass: [], lightClass: [] })
+			}`
+		})
+	]
 }

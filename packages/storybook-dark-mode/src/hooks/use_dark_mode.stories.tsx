@@ -1,15 +1,17 @@
+import { StoryCard } from '@repobuddy/storybook'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import React from 'react'
 import { useDarkMode } from './use_dark_mode'
 
 export default {
-	title: 'API/hooks/useDarkMode'
+	title: 'API/hooks/useDarkMode',
+	tags: ['func']
 } satisfies Meta
 
 export const InRender: StoryObj = {
 	render() {
 		const isDark = useDarkMode()
-		return <div>Dark mode: {isDark ? 'on' : 'off'}</div>
+		return <StoryCard appearance="output">Dark mode: {isDark ? 'on' : 'off'}</StoryCard>
 	}
 }
 
@@ -19,7 +21,7 @@ export const InDecorator: StoryObj = {
 			const isDark = useDarkMode()
 			return (
 				<>
-					<div>Dark mode: {isDark ? 'on' : 'off'}</div>
+					<StoryCard appearance="output">Dark mode: {isDark ? 'on' : 'off'}</StoryCard>
 					<Story />
 				</>
 			)
