@@ -5,6 +5,8 @@ import { themes } from 'storybook/theming'
 
 import '../tailwind.css'
 
+import '@repobuddy/storybook/styles.css'
+
 export default definePreview({
 	addons: [addonDocs(), addonDarkMode()],
 	parameters: {

@@ -66,7 +66,7 @@
 		"dequal": "^2.0.3"
 	},
 	"devDependencies": {
-		"@repobuddy/storybook": "^2.1.2",
+		"@repobuddy/storybook": "^2.22.0",
 		"@repobuddy/vitest": "^2.0.0",
 		"@storybook/addon-docs": "^10.0.7",
 		"@storybook/addon-vitest": "^10.0.7",
