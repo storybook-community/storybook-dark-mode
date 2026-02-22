@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.1.1
+
+### Patch Changes
+
+- [`87e4f85`](https://github.com/storybook-community/storybook-dark-mode/commit/87e4f85bc1e58c766243af5f4dd4cf4d417472e0) Thanks [@unional](https://github.com/unional)! - Replace usage of `IconButton` to `Button`.
+
+- [`a57d552`](https://github.com/storybook-community/storybook-dark-mode/commit/a57d552b627a62e9a5f0d8c94e6c1b6c24271e9e) Thanks [@unional](https://github.com/unional)! - Handle when `darkClass` or `lightClass` is an empty string or an empty array.
+
 ## 7.1.0
 
 ### Minor Changes
