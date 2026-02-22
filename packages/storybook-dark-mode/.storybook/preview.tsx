@@ -3,9 +3,8 @@ import addonDocs from '@storybook/addon-docs'
 import { definePreview } from '@storybook/react-vite'
 import { themes } from 'storybook/theming'
 
-import '../tailwind.css'
-
-import '@repobuddy/storybook/styles.css'
+import './tailwind.css'
+import './tailwind.repobuddy-storybook.css'
 
 export default definePreview({
 	addons: [addonDocs(), addonDarkMode()],
