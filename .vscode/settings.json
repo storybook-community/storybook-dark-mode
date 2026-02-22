@@ -45,7 +45,8 @@
 		"editor.formatOnSave": true
 	},
 	"cSpell.ignorePaths": [
-		".all-contributorsrc"
+		".all-contributorsrc",
+		".vscode/extensions.json"
 	],
 	"cSpell.words": [
 		"arrayify",
@@ -61,5 +62,8 @@
 		"*.css": "tailwindcss"
 	},
 	"git.alwaysSignOff": true,
-	"githubPullRequests.createDefaultBaseBranch": "createdFromBranch"
+	"githubPullRequests.createDefaultBaseBranch": "createdFromBranch",
+	"yaml.schemas": {
+		"https://www.schemastore.org/pnpm-workspace.json": "pnpm-workspace.yaml"
+	}
 }

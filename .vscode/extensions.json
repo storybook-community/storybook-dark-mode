@@ -1,6 +1,7 @@
 {
 	"recommendations": [
+		"bradlc.vscode-tailwindcss",
 		"davidanson.vscode-markdownlint",
-		"bradlc.vscode-tailwindcss"
+		"redhat.vscode-yaml"
 	]
 }
