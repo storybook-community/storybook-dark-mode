@@ -1,6 +1,6 @@
 import { MoonIcon, SunIcon } from '@storybook/icons'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import { IconButton } from 'storybook/internal/components'
+import { Button } from 'storybook/internal/components'
 import { type API, addons, useParameter } from 'storybook/manager-api'
 import { mergeThemeWithBrandConfig } from '../internal/utils/merge_theme_with_brand_config'
 import type { DarkModeStore } from '../internal/utils/store'
@@ -123,13 +123,13 @@ export function DarkModeToggle({ api }: DarkModeProps) {
 			? 'Dark mode is disabled by parameter'
 			: undefined
 	return (
-		<IconButton
-			key="dark-mode"
+		<Button
+			aria-label="Toggle dark mode"
 			disabled={!!disabledMessage}
 			title={disabledMessage ?? (isDark ? 'Change theme to light mode' : 'Change theme to dark mode')}
 			onClick={handleIconClick}
 		>
 			{isDark ? <SunIcon aria-hidden="true" /> : <MoonIcon aria-hidden="true" />}
-		</IconButton>
+		</Button>
 	)
 }
