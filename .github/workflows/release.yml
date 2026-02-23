@@ -13,8 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PLAYWRIGHT_PATH: ~/.cache/ms-playwright
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - uses: actions/checkout@v4
 
@@ -42,4 +40,4 @@ jobs:
           version: pnpm run version
           publish: pnpm run release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CHANGESETS_GITHUB_TOKEN }}
