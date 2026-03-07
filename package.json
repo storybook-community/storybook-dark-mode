@@ -9,6 +9,7 @@
 		"clean": "turbo run clean",
 		"cov": "turbo run cov",
 		"cs": "changeset",
+		"lib": "pnpm --filter=@storybook-community/storybook-dark-mode",
 		"nuke": "turbo run nuke &&rimraf node_modules",
 		"p:u": "playwright install --with-deps chromium",
 		"release": "changeset publish",
