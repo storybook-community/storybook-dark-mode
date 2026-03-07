@@ -1,10 +1,12 @@
 import { MoonIcon, SunIcon } from '@storybook/icons'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { getManagerTarget } from 'src/manager/_utils'
 import { Button } from 'storybook/internal/components'
 import { type API, addons, useParameter } from 'storybook/manager-api'
 import { mergeThemeWithBrandConfig } from '../_internal/utils/merge_theme_with_brand_config'
 import type { DarkModeStore } from '../_internal/utils/store'
-import { prefersDark, store, updateManager, updatePreview, updateStore } from '../_internal/utils/store'
+import { prefersDark, store, toggleDarkClass, updateStore } from '../_internal/utils/store'
+import { getPreviewTarget } from '../preview/_utils'
 import { DARK_MODE_EVENT_NAME, UPDATE_DARK_MODE_EVENT_NAME } from '../static/constants'
 import type { Mode } from '../static/types'
 
@@ -32,9 +34,15 @@ export function DarkModeToggle({ api }: DarkModeProps) {
 			})
 			setDark(mode === 'dark')
 			channel.emit(DARK_MODE_EVENT_NAME, mode === 'dark')
-			updateManager(currentStore)
+			const managerTarget = getManagerTarget(currentStore.classTarget)
+			if (managerTarget) {
+				toggleDarkClass(managerTarget, currentStore)
+			}
 			if (stylePreview) {
-				updatePreview(currentStore)
+				const target = getPreviewTarget(currentStore.classTarget)
+				if (target) {
+					toggleDarkClass(target, currentStore)
+				}
 			}
 		},
 		[api, stylePreview]

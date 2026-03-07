@@ -24,7 +24,7 @@ export interface DarkModeStore {
 	disable: boolean
 }
 
-const { document, window } = globalThis
+const { window } = globalThis
 
 const STORAGE_KEY = 'sb-addon-themes-3'
 export const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)')
@@ -66,35 +66,6 @@ export const toggleDarkClass = (
 	if (toAdd.length) el.classList.add(...toAdd)
 }
 
-/** Update the preview iframe class */
-export const updatePreview = (store: DarkModeStore) => {
-	const iframe = document.getElementById('storybook-preview-iframe') as HTMLIFrameElement
-
-	if (!iframe) {
-		return
-	}
-
-	const iframeDocument = iframe.contentDocument || iframe.contentWindow?.document
-	const target = iframeDocument?.querySelector<HTMLElement>(store.classTarget)
-
-	if (!target) {
-		return
-	}
-
-	toggleDarkClass(target, store)
-}
-
-/** Update the manager iframe class */
-export const updateManager = (store: DarkModeStore) => {
-	const manager = document.querySelector(store.classTarget)
-
-	if (!manager) {
-		return
-	}
-
-	toggleDarkClass(manager, store)
-}
-
 /** Update changed dark mode settings and persist to localStorage  */
 export const store = (userTheme: Partial<DarkModeStore> = {}): DarkModeStore => {
 	const storedItem = window.localStorage.getItem(STORAGE_KEY)
@@ -119,8 +90,3 @@ export const store = (userTheme: Partial<DarkModeStore> = {}): DarkModeStore => 
 
 	return { ...defaultParams, ...userTheme } as DarkModeStore
 }
-
-// On initial load, set the dark mode class on the manager
-// This is needed if you're using mostly CSS overrides to styles the storybook
-// Otherwise the default theme is set in src/preset/manager.tsx
-updateManager(store())
