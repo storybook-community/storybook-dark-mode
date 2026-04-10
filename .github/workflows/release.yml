@@ -6,7 +6,7 @@ on:
       - main
 permissions:
   id-token: write
-  contents: read
+  contents: write
 
 jobs:
   release:
@@ -39,5 +39,5 @@ jobs:
           commit: 'chore: version packages'
           version: pnpm run version
           publish: pnpm run release
-        env:
-          GITHUB_TOKEN: ${{ secrets.CHANGESETS_GITHUB_TOKEN }}
+        # env:
+        #   GITHUB_TOKEN: ${{ secrets.CHANGESETS_GITHUB_TOKEN }}
