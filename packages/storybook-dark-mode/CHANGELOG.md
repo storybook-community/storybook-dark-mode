@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.1.2
+
+### Patch Changes
+
+- [`70f0372`](https://github.com/storybook-community/storybook-dark-mode/commit/70f0372dbca4be85bcfe3aafa6820bb04acb2955) Thanks [@unional](https://github.com/unional)! - Fixed the dark mode toolbar toggle importing manager utilities via an invalid `src/` path; it now resolves `getManagerTarget` using a package-relative import so bundlers consistently include the helper.
+
 ## 7.1.1
 
 ### Patch Changes
