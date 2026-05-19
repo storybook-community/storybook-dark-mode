@@ -1,6 +1,6 @@
 {
 	"name": "@storybook-community/storybook-dark-mode",
-	"version": "7.1.2",
+	"version": "7.1.3",
 	"description": "Toggle between light and dark mode in Storybook",
 	"keywords": [
 		"appearance",

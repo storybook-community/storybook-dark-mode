@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.1.3
+
+### Patch Changes
+
+- [#67](https://github.com/storybook-community/storybook-dark-mode/pull/67) [`d1fa7a4`](https://github.com/storybook-community/storybook-dark-mode/commit/d1fa7a43eb025a9d2f5262939ac9ef48785c7441) Thanks [@unional](https://github.com/unional)! - Fix brand image not switching between light and dark themes (issue #66)
+
+  `mergeThemeWithBrandConfig` now gives store theme properties priority over config theme properties, so per-mode `brandImage` and `brandTitle` set on the dark/light theme are preserved instead of being overwritten by the global config theme.
+
 ## 7.1.2
 
 ### Patch Changes
