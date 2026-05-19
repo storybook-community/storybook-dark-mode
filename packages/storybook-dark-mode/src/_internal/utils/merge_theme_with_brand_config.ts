@@ -1,10 +1,9 @@
 import type { ThemeVars } from 'storybook/theming'
 
 /**
- * Merges store theme with brand configuration from Storybook config
- * @param storeTheme - The theme from the store
- * @param configTheme - The brand configuration from Storybook config
- * @returns The merged theme with brand properties from config
+ * Merges store theme with brand configuration from Storybook config.
+ * storeTheme properties take priority so per-mode brand images/titles are preserved.
+ * configTheme acts as a fallback for any brand properties not set on the store theme.
  */
 export function mergeThemeWithBrandConfig(storeTheme: ThemeVars, configTheme: ThemeVars | undefined) {
 	if (!configTheme) {
@@ -12,10 +11,7 @@ export function mergeThemeWithBrandConfig(storeTheme: ThemeVars, configTheme: Th
 	}
 
 	return {
-		...storeTheme,
-		brandImage: configTheme.brandImage,
-		brandTitle: configTheme.brandTitle,
-		brandUrl: configTheme.brandUrl,
-		brandTarget: configTheme.brandTarget
+		...configTheme,
+		...storeTheme
 	}
 }
