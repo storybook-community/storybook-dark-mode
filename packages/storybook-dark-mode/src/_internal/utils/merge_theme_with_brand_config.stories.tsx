@@ -45,6 +45,24 @@ const mockConfigTheme = {
 	brandTarget: '_blank'
 } as ThemeVars
 
+export const PerModeBrandImageIsRespected: Story = {
+	render: () => <TestComponent />,
+	play: async () => {
+		// Issue #66: brandImage should differ between dark and light themes
+		const lightStoreTheme = { base: 'light', brandImage: './logo-dark.svg' } as ThemeVars
+		const darkStoreTheme = { base: 'dark', brandImage: './logo-light.svg' } as ThemeVars
+		const configTheme = { brandTitle: 'My App' } as ThemeVars
+
+		const lightResult = mergeThemeWithBrandConfig(lightStoreTheme, configTheme)
+		const darkResult = mergeThemeWithBrandConfig(darkStoreTheme, configTheme)
+
+		expect(lightResult.brandImage).toBe('./logo-dark.svg')
+		expect(darkResult.brandImage).toBe('./logo-light.svg')
+		expect(lightResult.brandTitle).toBe('My App')
+		expect(darkResult.brandTitle).toBe('My App')
+	}
+}
+
 export const PreservesBrandPropertiesWhenSwitchingToDarkTheme: Story = {
 	render: () => <TestComponent />,
 	play: async () => {
@@ -101,19 +119,21 @@ export const HandlesPartialBrandConfiguration: Story = {
 	}
 }
 
-export const OverridesStoreThemeBrandPropertiesWithConfigTheme: Story = {
+export const StoreThemeBrandPropertiesOverrideConfigTheme: Story = {
 	render: () => <TestComponent />,
 	play: async () => {
 		const storeThemeWithBrand = {
 			...mockStoreThemes.light,
-			brandImage: 'https://store.com/old-logo.png',
-			brandTitle: 'Old Title'
+			brandImage: 'https://store.com/mode-logo.png',
+			brandTitle: 'Mode Title'
 		}
 
 		const result = mergeThemeWithBrandConfig(storeThemeWithBrand, mockConfigTheme)
 
-		expect(result.brandImage).toBe('https://example.com/my-custom-logo.png')
-		expect(result.brandTitle).toBe('My Custom App')
+		// storeTheme brand properties win — enables per-mode brandImage (fixes #66)
+		expect(result.brandImage).toBe('https://store.com/mode-logo.png')
+		expect(result.brandTitle).toBe('Mode Title')
+		// configTheme provides fallback for properties not in storeTheme
 		expect(result.brandUrl).toBe('https://example.com')
 		expect(result.brandTarget).toBe('_blank')
 	}
@@ -149,13 +169,7 @@ export const HandlesEmptyConfigThemeObject: Story = {
 		const emptyConfigTheme = {} as ThemeVars
 		const result = mergeThemeWithBrandConfig(mockStoreThemes.light, emptyConfigTheme)
 
-		expect(result).toEqual({
-			...mockStoreThemes.light,
-			brandImage: undefined,
-			brandTitle: undefined,
-			brandUrl: undefined,
-			brandTarget: undefined
-		})
+		expect(result).toEqual(mockStoreThemes.light)
 	}
 }
 
