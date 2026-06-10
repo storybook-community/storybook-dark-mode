@@ -1,0 +1,9 @@
+/*
+ * Storybook Docs renders a permalink anchor as the first child of
+ * markdown headings. When the Docs theme is switched dynamically, the generic
+ * Docs link styles can override the anchor's negative margin, causing only the
+ * first visual line of a wrapped heading to shift right.
+ */
+.sbdocs-content :is(h1, h2, h3, h4, h5, h6) > a:first-child[href^="#"] {
+	margin-left: -24px !important;
+}
