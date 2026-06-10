@@ -310,6 +310,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Andreas02-dev",
+      "name": "Andreas Hoornstra",
+      "avatar_url": "https://avatars.githubusercontent.com/u/69248785?v=4",
+      "profile": "https://github.com/Andreas02-dev",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
