@@ -16,8 +16,9 @@
 		"sb": "pnpm run --filter=@storybook-community/storybook-dark-mode sb",
 		"sb:build": "pnpm run --filter=@storybook-community/storybook-dark-mode sb:build",
 		"test": "turbo run test",
-		"v": "run-s check build cov",
-		"verify": "run-s check build cov",
+		"typecheck": "turbo run typecheck",
+		"v": "pnpm run verify",
+		"verify": "run-s check build typecheck cov",
 		"version": "changeset version"
 	},
 	"devDependencies": {

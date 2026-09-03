@@ -58,7 +58,8 @@
 		"storybook": "storybook dev -p 6006",
 		"t": "vitest run",
 		"test": "vitest run",
-		"v": "run-s lint build cov",
+		"typecheck": "tsc",
+		"v": "run-s check build typecheck cov",
 		"w": "vitest"
 	},
 	"dependencies": {
