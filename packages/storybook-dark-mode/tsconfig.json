@@ -13,6 +13,7 @@
     "module": "preserve",
     // "moduleDetection": "force",
     "moduleResolution": "bundler",
+    "noEmit": true,
     "noImplicitAny": true,
     "noImplicitOverride": true,
     "noUncheckedIndexedAccess": true,
@@ -28,6 +29,8 @@
     ".storybook/**/*.tsx",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "tsup.config.ts"
+    "tsdown.config.ts",
+    "vite.config.ts",
+    "vitest.config.ts"
   ]
 }
