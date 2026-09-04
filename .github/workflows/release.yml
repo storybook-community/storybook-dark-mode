@@ -42,9 +42,15 @@ jobs:
           publish: pnpm run release
         env:
           # `@changesets/changelog-github` calls the GitHub API to build changelog
-          # entries, so this needs a token that can read the repo. The dedicated PAT
-          # has expired, which fails `changeset version` with a 401 and stops every
-          # release. Fall back to the built-in token so an expired or absent PAT
-          # degrades instead of blocking. `main` is unprotected here, so the version
-          # PR opened under GITHUB_TOKEN still merges normally.
-          GITHUB_TOKEN: ${{ secrets.CHANGESETS_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+          # entries, so this needs a token that can read the repo.
+          #
+          # This deliberately does NOT read the org-level CHANGESETS_GITHUB_TOKEN.
+          # That PAT expired and fails `changeset version` with a 401, which stopped
+          # every release on this repo. A `secrets.X || secrets.GITHUB_TOKEN` fallback
+          # does not help: Actions expressions fall through on an *empty* value, not a
+          # *rejected* one, so a present-but-expired secret always wins the `||`.
+          #
+          # The built-in token can read this public repo, which is all the changelog
+          # generator needs. `main` is unprotected here, so the version PR it opens has
+          # no required checks to satisfy and still merges normally.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
