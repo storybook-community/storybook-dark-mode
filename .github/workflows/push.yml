@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   verify:
     uses: ./.github/workflows/verify.yml
