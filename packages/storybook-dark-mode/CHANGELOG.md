@@ -1,5 +1,19 @@
 # Changelog
 
+## 7.1.4
+
+### Patch Changes
+
+- [#71](https://github.com/storybook-community/storybook-dark-mode/pull/71) [`c3e3aaa`](https://github.com/storybook-community/storybook-dark-mode/commit/c3e3aaa03e71b9897eca17b3a1d1573deef56ef1) Thanks [@unional](https://github.com/unional)! - Declare `engines.node: ">=20.19.0"` on the published package.
+
+  This records a floor the package already had in practice rather than
+  introducing a new one: the addon peer-depends on Storybook 10, whose own
+  minimum Node version is 20.19, and it is published ESM-only with no CJS
+  output. Installing on an older Node was never supported; now the manifest
+  says so.
+
+  No change to the emitted code, the exports map, or the public API.
+
 ## 7.1.3
 
 ### Patch Changes
