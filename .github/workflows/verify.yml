@@ -6,6 +6,12 @@ name: verify
 on:
   workflow_call:
 
+# Reusable workflows do not inherit a caller's permissions, and an undeclared
+# block means the repo default applies — which is `write` here. Verification only
+# ever reads the tree.
+permissions:
+  contents: read
+
 jobs:
   verify:
     runs-on: ubuntu-latest
