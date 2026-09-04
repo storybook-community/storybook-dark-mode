@@ -1,56 +1,47 @@
 name: Release
 
+# The filename is load-bearing. npm's trusted publisher for
+# @storybook-community/storybook-dark-mode names this exact path
+# (.github/workflows/release.yml) as the caller it will mint credentials for.
+# Renaming or moving this file breaks publishing.
+
 on:
   push:
     branches:
       - main
+
 permissions:
-  id-token: write
-  contents: write
+  contents: read
 
 jobs:
+  verify:
+    uses: ./.github/workflows/verify.yml
+
   release:
-    runs-on: ubuntu-latest
-    env:
-      PLAYWRIGHT_PATH: ~/.cache/ms-playwright
-    steps:
-      - uses: actions/checkout@v7
-
-      - name: Prepare repository
-        run: git fetch --unshallow --tags
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v6
-      - name: Use Node.js 24
-        uses: actions/setup-node@v7
-        with:
-          node-version: 24
-          cache: 'pnpm'
-      - run: pnpm install
-      - name: Install playwright browsers
-        uses: storybook-community/.github/.github/actions/setup-playwright@main
-      - run: pnpm check
-      - run: pnpm build
-      - run: pnpm typecheck
-      - run: pnpm cov
-      - name: Create Release Pull Request or Publish to npm
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          commit: 'chore: version packages'
-          version: pnpm run version
-          publish: pnpm run release
-        env:
-          # `@changesets/changelog-github` calls the GitHub API to build changelog
-          # entries, so this needs a token that can read the repo.
-          #
-          # This deliberately does NOT read the org-level CHANGESETS_GITHUB_TOKEN.
-          # That PAT expired and fails `changeset version` with a 401, which stopped
-          # every release on this repo. A `secrets.X || secrets.GITHUB_TOKEN` fallback
-          # does not help: Actions expressions fall through on an *empty* value, not a
-          # *rejected* one, so a present-but-expired secret always wins the `||`.
-          #
-          # The built-in token can read this public repo, which is all the changelog
-          # generator needs. `main` is unprotected here, so the version PR it opens has
-          # no required checks to satisfy and still merges normally.
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    needs: verify
+    # Declaring `permissions:` replaces the default set, so every scope the called
+    # workflow needs must be listed here — unlisted ones drop to `none`, not to the
+    # default, and a callee asking for more than the caller holds fails at startup.
+    permissions:
+      # Mints the OIDC token npm exchanges for short-lived publish credentials.
+      id-token: write
+      # Lets changesets/action push the version branch and tags.
+      contents: write
+      # Lets changesets/action open the "version packages" PR.
+      pull-requests: write
+    # Secretless. npm publishing already went through trusted publishing (OIDC) —
+    # 7.1.3 carries a provenance attestation and the workflow that produced it had
+    # no npm credential at all. The only token left was the org-level
+    # CHANGESETS_GITHUB_TOKEN PAT, which expired in 2025 and broke every release;
+    # this workflow uses the built-in GITHUB_TOKEN instead.
+    #
+    # storybook-community/.github ships no reusable release workflow (only the
+    # setup-playwright action), so this borrows unional/.github, which is public
+    # and is what storybook-addon-css-user-prefs already does.
+    #
+    # @v1, not @v2: the v2 line uses changesets/action@v2, which refuses to run
+    # against @changesets/cli v2. This repo pins ^2.29.7. Moving to @v2 means
+    # upgrading to @changesets/cli ^3 and @changesets/changelog-github ^1 first.
+    uses: unional/.github/.github/workflows/pnpm-release-changeset-oidc.yml@v1
+    with:
+      node-version: '24'
