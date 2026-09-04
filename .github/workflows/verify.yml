@@ -1,0 +1,34 @@
+name: verify
+
+# Reusable so `push.yml` (pull requests) and `release.yml` (main) run exactly the
+# same checks. They previously duplicated the same six steps, which is how they
+# drifted onto different Node versions — 22.x on pull requests, 24 on releases.
+on:
+  workflow_call:
+
+# Reusable workflows do not inherit a caller's permissions, and an undeclared
+# block means the repo default applies — which is `write` here. Verification only
+# ever reads the tree.
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      PLAYWRIGHT_PATH: ~/.cache/ms-playwright
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: 'pnpm'
+      - run: pnpm install
+      # `pnpm cov` drives a real browser, so the browsers must be present. The
+      # reusable release workflow does not install them, which is why verification
+      # stays here rather than moving into the release job.
+      - name: Install playwright browsers
+        uses: storybook-community/.github/.github/actions/setup-playwright@main
+      # `run-s check build typecheck cov`
+      - run: pnpm verify

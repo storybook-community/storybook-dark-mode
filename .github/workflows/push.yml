@@ -5,25 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   verify:
-    runs-on: ubuntu-latest
-    env:
-      PLAYWRIGHT_PATH: ~/.cache/ms-playwright
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-      - name: Use Node.js 22
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.x
-          cache: 'pnpm'
-      - run: pnpm install
-      - name: Install playwright browsers
-        uses: storybook-community/.github/.github/actions/setup-playwright@main
-
-      - run: pnpm check
-      - run: pnpm build
-      - run: pnpm typecheck
-      - run: pnpm cov
+    uses: ./.github/workflows/verify.yml
