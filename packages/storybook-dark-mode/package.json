@@ -45,7 +45,8 @@
 	"files": [
 		"dist",
 		"readme.md",
-		"*.js"
+		"*.js",
+		"CHANGELOG.md"
 	],
 	"scripts": {
 		"build": "tsdown",
